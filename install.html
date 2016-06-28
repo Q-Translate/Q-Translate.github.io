@@ -2,15 +2,15 @@
 layout: default
 ---
 
-<p>B-Translator is made of two parts,
-a <a href="https://github.com/B-Translator/btr_client"
+<p>Q-Translate is made of two parts,
+a <a href="https://github.com/Q-Translate/qtr_client"
 target="_blank">client</a> application and a
-<a href="https://github.com/B-Translator/btr_server"
+<a href="https://github.com/Q-Translate/qtr_server"
 target="_blank">server</a> application, which communicate with
 each-other through an <a href="/api/" target="_blank">HTTP
 API</a>. Both of these applications are built with Drupal7. For more
 flexibility, there is also
-a <a href="https://github.com/B-Translator/btrclient"
+a <a href="https://github.com/Q-Translate/qtrclient"
 target="_blank">drupal module</a> for the client, that can be
 installed independently on any Drupal application or distribution.</p>
 
@@ -20,39 +20,39 @@ see: <a href="https://docs.docker.com/installation/"
 target="_blank">https://docs.docker.com/installation/</a></p>
 
 
-<a id="btr_client"><h2>Installing btr_client</h2></a>
+<a id="qtr_client"><h2>Installing qtr_client</h2></a>
 
 <ol>
   <li>Get the image of the system:
-    <pre class="example">docker search btranslator
-docker pull btranslator/btr_client:v3.0</pre>
+    <pre class="example">docker search qtranslate
+docker pull qtranslate/qtr_client:v3.0</pre>
   </li>
 
   <li>Create a container:
     <pre class="example">### create a container
-docker create --name=btr_client --hostname=example.org \
+docker create --name=qtr_client --hostname=example.org \
     -p 80:80 -p 443:443 --restart=always \
-    btranslator/btr_client:v3.0
+    qtranslate/qtr_client:v3.0
 
 ### start the container
-docker start btr_client</pre>
+docker start qtr_client</pre>
   </li>
 
   <li>Change the configuration:
     <pre class="example">### enter the shell of the container
-alias docker-exec='docker exec -it btr_client env TERM=xterm'
+alias docker-exec='docker exec -it qtr_client env TERM=xterm'
 docker-exec bash
 
 ### modify the configration settings
-cp install/settings.sh btr_client.conf
-vim btr_client.conf
+cp install/settings.sh qtr_client.conf
+vim qtr_client.conf
 
 ### change the configuration
-install/config.sh btr_client.conf
+install/config.sh qtr_client.conf
 
 ### restart the container
 exit
-docker restart btr_client</pre>
+docker restart qtr_client</pre>
   </li>
 
   <li>If this is a test installation or you are installing it on your
@@ -84,43 +84,42 @@ docker-exec install/config/oauth2_login.sh</pre>
 </ol>
 
 
-<a id="btr_server"><h2>Installing btr_server</h2></a>
+<a id="qtr_server"><h2>Installing qtr_server</h2></a>
 
 <ol>
   <li>Get the image of the system:
-    <pre class="example">docker search btranslator
-docker pull btranslator/btr_server:v3.0</pre>
+    <pre class="example">docker search qtranslate
+docker pull qtranslate/qtr_server:v3.0</pre>
   </li>
 
   <li>Create a container:
-    <pre class="example">mkdir -p /docker/{PO_files,downloads}
+    <pre class="example">mkdir -p /docker/downloads
 
 ### create a container
-docker create --name=btr_server --hostname=example.org \
-    -v /docker/PO_files:/var/www/PO_files \
+docker create --name=qtr_server --hostname=example.org \
     -v /docker/downloads:/var/www/downloads \
     -p 80:80 -p 443:443 --restart=always \
-    btranslator/btr_server:v3.0
+    qtranslate/qtr_server:v3.0
 
 ### start the container
-docker start btr_server</pre>
+docker start qtr_server</pre>
   </li>
 
   <li>Change the configuration:
     <pre class="example">### enter the shell of the container
-alias docker-exec='docker exec -it btr_server env TERM=xterm'
+alias docker-exec='docker exec -it qtr_server env TERM=xterm'
 docker-exec bash
 
 ### modify the configration settings
-cp install/settings.sh btr_server.conf
-vim btr_server.conf
+cp install/settings.sh qtr_server.conf
+vim qtr_server.conf
 
 ### change the configuration
-install/config.sh btr_server.conf
+install/config.sh qtr_server.conf
 
 ### restart the container
 exit
-docker restart btr_server</pre>
+docker restart qtr_server</pre>
   </li>
 
   <li>Make more configuration changes:
@@ -137,15 +136,4 @@ docker-exec install/config/drupalpass.sh
 docker-exec install/config/gmailsmtp.sh</pre>
   </li>
 
-  <li>Download and import PO files:
-    <pre class="example">### get the PO files (takes a long time)
-docker-exec /var/www/data/get.sh
-docker-exec tail -f /var/www/data/nohup-get.out
-docker-exec less -r /var/www/data/nohup-get.out
-
-### import them (takes many hours and maybe days)
-docker-exec /var/www/data/import.sh
-docker-exec tail -f /var/www/data/nohup-import.out
-docker-exec less -r /var/www/data/nohup-import.out</pre>
-  </li>
 </ol>

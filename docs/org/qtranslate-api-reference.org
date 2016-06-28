@@ -1,4 +1,4 @@
-#+TITLE:     B-Translator API Reference
+#+TITLE:     Q-Translate API Reference
 #+AUTHOR:    Dashamir Hoxha
 #+EMAIL:     dashohoxha@gmail.com
 #+LANGUAGE:  en
@@ -27,14 +27,14 @@
 
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/report/statistics.php]]
-   - [[http://info.btranslator.org/api-examples-js/#report/statistics_get.js]]
-   - [[http://info.btranslator.org/api-examples-js/#report/statistics_post.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/report/statistics.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#report/statistics_get.js]]
+   - [[http://info.qtranslate.org/api-examples-js/#report/statistics_post.js]]
 
    #+begin_example
-   curl 'https://btranslator.org/api/report/statistics?lng=sq&origin=LibreOffice&project=cui'
-   curl -H 'Accept: application/json' 'https://btranslator.org/api/report/statistics?lng=sq'
-   curl -H 'Content-type: application/json' -X POST https://btranslator.org/api/report/statistics -d '{"lng": "sq"}'
+   curl 'https://qtranslate.org/api/report/statistics?lng=sq&origin=LibreOffice&project=cui'
+   curl -H 'Accept: application/json' 'https://qtranslate.org/api/report/statistics?lng=sq'
+   curl -H 'Content-type: application/json' -X POST https://qtranslate.org/api/report/statistics -d '{"lng": "sq"}'
    #+end_example
 
 
@@ -55,14 +55,14 @@
      - lng :: language of translations
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/report/project_stats.php]]
-   - [[http://info.btranslator.org/api-examples-js/#report/project_stats_get.js]]
-   - [[http://info.btranslator.org/api-examples-js/#report/project_stats_post.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/report/project_stats.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#report/project_stats_get.js]]
+   - [[http://info.qtranslate.org/api-examples-js/#report/project_stats_post.js]]
 
    #+begin_example
-   curl 'https://btranslator.org/api/report/project_stats?origin=LibreOffice&project=cui&lng=sq'
-   curl -H 'Accept: application/json' 'https://btranslator.org/api/report/project_stats?origin=LibreOffice&project=cui&lng=sq'
-   curl -H 'Content-type: application/json' -X POST https://btranslator.org/api/report/project_stats -d '{"origin": "LibreOffice", "project": "cui", "lng": "sq"}'
+   curl 'https://qtranslate.org/api/report/project_stats?origin=LibreOffice&project=cui&lng=sq'
+   curl -H 'Accept: application/json' 'https://qtranslate.org/api/report/project_stats?origin=LibreOffice&project=cui&lng=sq'
+   curl -H 'Content-type: application/json' -X POST https://qtranslate.org/api/report/project_stats -d '{"origin": "LibreOffice", "project": "cui", "lng": "sq"}'
    #+end_example
 
 
@@ -85,13 +85,13 @@
      - project :: (optional) name of the project 
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/report/topcontrib.php]]
-   - [[http://info.btranslator.org/api-examples-js/#report/topcontrib_get.js]]
-   - [[http://info.btranslator.org/api-examples-js/#report/topcontrib_post.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/report/topcontrib.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#report/topcontrib_get.js]]
+   - [[http://info.qtranslate.org/api-examples-js/#report/topcontrib_post.js]]
 
    #+begin_example
-   curl -H 'Accept: application/json' 'https://btranslator.org/api/report/topcontrib?lng=sq&period=week'
-   curl -H 'Accept: application/json' -H 'Content-type: application/json' -X POST https://btranslator.org/api/report/topcontrib -d '{"lng": "sq", "period": "week", "size": 10}' -H 'Accept: application/json'
+   curl -H 'Accept: application/json' 'https://qtranslate.org/api/report/topcontrib?lng=sq&period=week'
+   curl -H 'Accept: application/json' -H 'Content-type: application/json' -X POST https://qtranslate.org/api/report/topcontrib -d '{"lng": "sq", "period": "week", "size": 10}' -H 'Accept: application/json'
    #+end_example
    
 
@@ -111,8 +111,8 @@
          origin1/project2=
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/translations/sguid.php]]
-   - [[http://info.btranslator.org/api-examples-js/#translations/get_random_sguid.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/translations/sguid.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#translations/get_random_sguid.js]]
 
 
 ** get
@@ -138,14 +138,14 @@
      also be one of =random | translated | untranslated=.
 
    Examples:
-   - [[http://info.btranslator.org/api-examples-js/#translations/retrieve.js]]
-   - [[http://dev.btranslator.org/api-examples-php/translations/get.php]]
-   - [[http://info.btranslator.org/api-examples-js/#translations/get.js]]
+   - [[http://info.qtranslate.org/api-examples-js/#translations/retrieve.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/translations/get.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#translations/get.js]]
 
    #+BEGIN_EXAMPLE
    curl -k -H 'Accept: application/json' \
-     'http://dev.btranslator.org/translations/sq/ee178b82f7ff3b5fb48537b834db673b42d48556'
-   curl -k -H 'Accept: application/json' http://dev.btranslator.org/translations/sq/random
+     'http://dev.qtranslate.org/translations/sq/ee178b82f7ff3b5fb48537b834db673b42d48556'
+   curl -k -H 'Accept: application/json' http://dev.qtranslate.org/translations/sq/random
    #+END_EXAMPLE
 
 
@@ -164,8 +164,8 @@
          between them.
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/translations/add.php]]
-   - [[http://info.btranslator.org/api-examples-js/#translations/add.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/translations/add.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#translations/add.js]]
 
 
 ** vote
@@ -176,8 +176,8 @@
      - tguid :: ID of the translation
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/translations/vote.php]]
-   - [[http://info.btranslator.org/api-examples-js/#translations/vote.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/translations/vote.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#translations/vote.js]]
 
 
 ** del
@@ -188,8 +188,8 @@
      - tguid :: ID of the translation
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/translations/add.php]]
-   - [[http://info.btranslator.org/api-examples-js/#translations/add.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/translations/add.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#translations/add.js]]
 
 
 ** del_vote
@@ -200,8 +200,8 @@
      - tguid :: ID of the translation
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/translations/vote.php]]
-   - [[http://info.btranslator.org/api-examples-js/#translations/vote.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/translations/vote.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#translations/vote.js]]
 
 
 ** search
@@ -265,13 +265,13 @@
     api/translations=
 
   Examples:
-  - [[http://dev.btranslator.org/api-examples-php/translations/search.php]]
-  - [[http://info.btranslator.org/api-examples-js/#translations/list.js]]
-  - [[http://info.btranslator.org/api-examples-js/#translations/search.js]]
+  - [[http://dev.qtranslate.org/api-examples-php/translations/search.php]]
+  - [[http://info.qtranslate.org/api-examples-js/#translations/list.js]]
+  - [[http://info.qtranslate.org/api-examples-js/#translations/search.js]]
 
   #+BEGIN_EXAMPLE
   curl -k -H 'Accept: application/json' \
-       'http://dev.btranslator.org/translations/search?lng=sq&words=space'
+       'http://dev.qtranslate.org/translations/search?lng=sq&words=space'
   curl -k -H 'Accept: application/json' \
        'https://l10n.org.al/translations/search?lng=sq&words=space'
   #+END_EXAMPLE
@@ -290,8 +290,8 @@
              Associative array of the needed parameters for this action.
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/translations/submit.php]]
-   - [[http://info.btranslator.org/api-examples-js/#translations/submit.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/translations/submit.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#translations/submit.js]]
 
 
 ** import
@@ -321,12 +321,12 @@
    This can be useful for translators if they prefer to work off-line
    with PO files. They can export the PO files of a project, work on
    them with desktop tools (like Lokalize) to translate or correct
-   exported translations, and then import back to B-Translator the
+   exported translations, and then import back to Q-Translate the
    translated/corrected PO files.
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/translations/import.php]]
-   - [[http://info.btranslator.org/api-examples-js/#translations/import.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/translations/import.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#translations/import.js]]
 
 
 * project
@@ -351,8 +351,8 @@
    + POST api/project/subscriptions ::
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/project/subscribe.php]]
-   - [[http://info.btranslator.org/api-examples-js/#project/subscribe.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/project/subscribe.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#project/subscribe.js]]
 
 
 ** list/all
@@ -361,11 +361,11 @@
      Return a full list of all the imported projects and languages.
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/project/list_all.php]]
-   - [[http://info.btranslator.org/api-examples-js/#project/list_all.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/project/list_all.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#project/list_all.js]]
 
    #+BEGIN_EXAMPLE
-   curl -s https://btranslator.org/project/list/all | python -m json.tool
+   curl -s https://qtranslate.org/project/list/all | python -m json.tool
    #+END_EXAMPLE
 
 
@@ -392,24 +392,24 @@
      JSON or TEXT (default).
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/project/list.php]]
-   - [[http://info.btranslator.org/api-examples-js/#project/list.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/project/list.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#project/list.js]]
 
    #+BEGIN_EXAMPLE
-   curl -k -X POST http://dev.btranslator.org/api/project/list
-   curl -k -X POST http://dev.btranslator.org/api/project/list \
+   curl -k -X POST http://dev.qtranslate.org/api/project/list
+   curl -k -X POST http://dev.qtranslate.org/api/project/list \
 	-H "Content-type: application/json" \
 	-d '{"origin": "t*"}'
    #+END_EXAMPLE
 
    #+BEGIN_EXAMPLE
-   curl 'https://btranslator.org/project/list/*/-'
-   curl 'https://btranslator.org/project/list/*/-/json'
-   curl 'https://btranslator.org/project/list/LibreOffice/s*'
-   curl 'https://btranslator.org/project/list/LibreOffice'
-   curl 'https://btranslator.org/project/list/*/nautil*'
-   curl 'https://btranslator.org/project/list/*/*/json'
-   curl 'https://btranslator.org/project/list'
+   curl 'https://qtranslate.org/project/list/*/-'
+   curl 'https://qtranslate.org/project/list/*/-/json'
+   curl 'https://qtranslate.org/project/list/LibreOffice/s*'
+   curl 'https://qtranslate.org/project/list/LibreOffice'
+   curl 'https://qtranslate.org/project/list/*/nautil*'
+   curl 'https://qtranslate.org/project/list/*/*/json'
+   curl 'https://qtranslate.org/project/list'
    #+END_EXAMPLE
 
 
@@ -420,7 +420,7 @@
 
    Examples:
    #+BEGIN_EXAMPLE
-   curl -s https://btranslator.org/project/langs/LibreOffice/cui | python -m json.tool
+   curl -s https://qtranslate.org/project/langs/LibreOffice/cui | python -m json.tool
    #+END_EXAMPLE
 
 
@@ -479,14 +479,14 @@
          Comma separated list of usernames of the preferred voters.
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/project/export.php]]
-   - [[http://info.btranslator.org/api-examples-js/#project/export.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/project/export.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#project/export.js]]
 
    #+BEGIN_EXAMPLE
-   curl -k 'http://dev.btranslator.org/project/export?origin=test&project=kturtle&lng=sq' > test1.tgz
-   curl -k http://dev.btranslator.org/project/export \
+   curl -k 'http://dev.qtranslate.org/project/export?origin=test&project=kturtle&lng=sq' > test1.tgz
+   curl -k http://dev.qtranslate.org/project/export \
 	-d 'origin=test&project=kturtle&lng=sq&export_mode=original' > test1.tgz
-   curl -k http://dev.btranslator.org/project/export \
+   curl -k http://dev.qtranslate.org/project/export \
 	-d origin=test -d project=kturtle -d lng=sq \
 	-d export_mode=preferred \
 	-d preferred_voters=user1,user2 > test1.tgz
@@ -495,7 +495,7 @@
 
 ** diff
 
-   For more details about diffs see: [[https://github.com/B-Translator/btr_server/blob/master/modules/custom/btrCore/data/README.org#snapshots-and-diffs][README.org#snapshots-and-diffs]]
+   For more details about diffs see: [[https://github.com/Q-Translate/qtr_server/blob/master/modules/custom/qtrCore/data/README.org#snapshots-and-diffs][README.org#snapshots-and-diffs]]
 
    + GET project/diff/$origin/$project/$lng[/$nr[/$ediff]] ::
      Return as plain-text the diff of the PO file for a given
@@ -511,22 +511,22 @@
 
    Examples:
    #+BEGIN_EXAMPLE
-   curl https://btranslator.org/project/diff/LibreOffice/sw/sq
-   curl https://btranslator.org/project/diff/LibreOffice/sw/sq/2 > 2.diff
-   curl https://btranslator.org/project/diff/LibreOffice/sw/sq/2/ediff > 2.ediff
-   curl https://btranslator.org/project/diff/LibreOffice/sw/sq/4 > 4.diff
-   curl https://btranslator.org/project/diff/LibreOffice/sw/sq/4/ediff > 4.ediff
+   curl https://qtranslate.org/project/diff/LibreOffice/sw/sq
+   curl https://qtranslate.org/project/diff/LibreOffice/sw/sq/2 > 2.diff
+   curl https://qtranslate.org/project/diff/LibreOffice/sw/sq/2/ediff > 2.ediff
+   curl https://qtranslate.org/project/diff/LibreOffice/sw/sq/4 > 4.diff
+   curl https://qtranslate.org/project/diff/LibreOffice/sw/sq/4/ediff > 4.ediff
    #+END_EXAMPLE
 
    #+BEGIN_EXAMPLE
-   curl https://btranslator.org/project/diff-dl/LibreOffice/sw/sq/2
-   curl https://btranslator.org/project/diff-dl/LibreOffice/sw/sq/2/ediff
-   curl https://btranslator.org/project/diff-dl/LibreOffice/sw/sq/4/diff
-   curl https://btranslator.org/project/diff-dl/LibreOffice/sw/sq/4/ediff
+   curl https://qtranslate.org/project/diff-dl/LibreOffice/sw/sq/2
+   curl https://qtranslate.org/project/diff-dl/LibreOffice/sw/sq/2/ediff
+   curl https://qtranslate.org/project/diff-dl/LibreOffice/sw/sq/4/diff
+   curl https://qtranslate.org/project/diff-dl/LibreOffice/sw/sq/4/ediff
    #+END_EXAMPLE
 
    #+BEGIN_EXAMPLE
-   curl 'https://btranslator.org/project/diff-latest/LibreOffice/sw/sq?format=diff&export_mode=preferred_by_me&friends='
+   curl 'https://qtranslate.org/project/diff-latest/LibreOffice/sw/sq?format=diff&export_mode=preferred_by_me&friends='
    #+END_EXAMPLE
 
 
@@ -562,8 +562,8 @@
      of =.pot=).
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/project/import.php]]
-   - [[http://info.btranslator.org/api-examples-js/#project/import.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/project/import.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#project/import.js]]
 
 
 ** delete
@@ -582,8 +582,8 @@
          type, where type can be one of =status=, =warning=, =error=.
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/project/delete.php]]
-   - [[http://info.btranslator.org/api-examples-js/#project/delete.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/project/delete.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#project/delete.js]]
 
 
 * vocabulary
@@ -602,12 +602,12 @@
      Return a list of vocabularies in JSON format.
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/vocabulary/list.php]]
-   - [[http://info.btranslator.org/api-examples-js/#vocabulary/list.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/vocabulary/list.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#vocabulary/list.js]]
 
    #+BEGIN_EXAMPLE
-   curl -s https://btranslator.org/vocabulary/list | python -m json.tool
-   curl -s http://dev.btranslator.org/vocabulary/list | python -m json.tool
+   curl -s https://qtranslate.org/vocabulary/list | python -m json.tool
+   curl -s http://dev.qtranslate.org/vocabulary/list | python -m json.tool
    #+END_EXAMPLE
 
 
@@ -622,13 +622,13 @@
          Default is =json=.
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/vocabulary/export.php]]
-   - [[http://info.btranslator.org/api-examples-js/#vocabulary/export.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/vocabulary/export.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#vocabulary/export.js]]
 
    #+BEGIN_EXAMPLE
-   curl -s https://btranslator.org/vocabulary/export/ICT_sq | python -m json.tool
-   curl https://btranslator.org/vocabulary/export/ICT_sq/txt1
-   curl https://btranslator.org/vocabulary/export/ICT_sq/org > ICT_sq.org
+   curl -s https://qtranslate.org/vocabulary/export/ICT_sq | python -m json.tool
+   curl https://qtranslate.org/vocabulary/export/ICT_sq/txt1
+   curl https://qtranslate.org/vocabulary/export/ICT_sq/org > ICT_sq.org
    #+END_EXAMPLE
 
 
@@ -657,8 +657,8 @@
    #+END_EXAMPLE
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/vocabulary/import.php]]
-   - [[http://info.btranslator.org/api-examples-js/#vocabulary/import.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/vocabulary/import.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#vocabulary/import.js]]
 
 
 ** add_string
@@ -683,8 +683,8 @@
                    type can be one of /status/, /warning/, /error/
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/vocabulary/add_string.php]]
-   - [[http://info.btranslator.org/api-examples-js/#vocabulary/add_string.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/vocabulary/add_string.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#vocabulary/add_string.js]]
 
 
 ** del_string
@@ -704,8 +704,8 @@
                    message is an array of a message and a type, where
                    type can be one of /status/, /warning/, /error/
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/vocabulary/add_string.php]]
-   - [[http://info.btranslator.org/api-examples-js/#vocabulary/add_string.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/vocabulary/add_string.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#vocabulary/add_string.js]]
 
 
 ** delete
@@ -724,8 +724,8 @@
          type, where type can be one of =status=, =warning=, =error=.
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/vocabulary/delete.php]]
-   - [[http://info.btranslator.org/api-examples-js/#vocabulary/delete.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/vocabulary/delete.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#vocabulary/delete.js]]
 
 
 * misc
@@ -740,44 +740,44 @@
         list.
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/misc/latest.php]]
-   - [[http://info.btranslator.org/api-examples-js/#misc/latest.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/misc/latest.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#misc/latest.js]]
 
    #+BEGIN_EXAMPLE
-   curl https://btranslator.org/latest/sq
-   curl https://btranslator.org/latest/sq/vocabulary
-   curl https://btranslator.org/latest/sq/vocabulary/ICT_sq
+   curl https://qtranslate.org/latest/sq
+   curl https://qtranslate.org/latest/sq/vocabulary
+   curl https://qtranslate.org/latest/sq/vocabulary/ICT_sq
    #+END_EXAMPLE
 
 
 ** rss-feed
 
-   + GET btr/rss-feed[/$origin[/$project]] :: Return a RSS feed of the
+   + GET qtr/rss-feed[/$origin[/$project]] :: Return a RSS feed of the
         latest translations (origin and project are optional). Latest
         means yesterday.  Results are cached, so last minute
         translations may not appear on the list.
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/misc/rss-feed.php]]
-   - [[http://info.btranslator.org/api-examples-js/#misc/rss-feed.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/misc/rss-feed.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#misc/rss-feed.js]]
 
    #+BEGIN_EXAMPLE
-   curl https://l10n.org.al/btr/rss-feed
-   curl https://l10n.org.al/btr/rss-feed/vocabulary
-   curl https://l10n.org.al/btr/rss-feed/vocabulary/ICT_sq
+   curl https://l10n.org.al/qtr/rss-feed
+   curl https://l10n.org.al/qtr/rss-feed/vocabulary
+   curl https://l10n.org.al/qtr/rss-feed/vocabulary/ICT_sq
 
-   curl https://btranslator.net/btr/rss-feed/LibreOffice/cui/sq
-   curl https://btranslator.net/btr/rss-feed/LibreOffice/cui
+   curl https://qtranslate.net/qtr/rss-feed/LibreOffice/cui/sq
+   curl https://qtranslate.net/qtr/rss-feed/LibreOffice/cui
 
-   curl https://btranslator.org/rss-feed/sq
-   curl https://btranslator.org/rss-feed/sq/LibreOffice
-   curl https://btranslator.org/rss-feed/sq/LibreOffice/cui
+   curl https://qtranslate.org/rss-feed/sq
+   curl https://qtranslate.org/rss-feed/sq/LibreOffice
+   curl https://qtranslate.org/rss-feed/sq/LibreOffice/cui
    #+END_EXAMPLE
 
 
 ** twitter
 
-   + GET btr/tweet[/$origin[/$project]] :: Return a random string and
+   + GET qtr/tweet[/$origin[/$project]] :: Return a random string and
         its translations in a suitable form for the twitter (truncated
         to 100 characters).
 
@@ -789,25 +789,25 @@
    *Note:* This can be used in combination with /cli twitter
    clients/ and with *cron* to post random tweets about
    translations.  See this script as an example:
-   https://github.com/B-Translator/btr_server/blob/master/utils/twitter.sh
+   https://github.com/Q-Translate/qtr_server/blob/master/utils/twitter.sh
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/misc/twitter.php]]
-   - [[http://info.btranslator.org/api-examples-js/#misc/twitter.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/misc/twitter.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#misc/twitter.js]]
 
    #+BEGIN_EXAMPLE
-   curl https://l10n.org.al/btr/tweet
-   curl https://l10n.org.al/btr/tweet/vocabulary
-   curl https://l10n.org.al/btr/tweet/vocabulary/ICT_sq
+   curl https://l10n.org.al/qtr/tweet
+   curl https://l10n.org.al/qtr/tweet/vocabulary
+   curl https://l10n.org.al/qtr/tweet/vocabulary/ICT_sq
 
-   curl https://btranslator.net/btr/tweet/vocabulary/ICT_sq/sq
+   curl https://qtranslate.net/qtr/tweet/vocabulary/ICT_sq/sq
 
-   curl https://btranslator.org/tweet/sq
-   curl https://btranslator.org/tweet/sq/vocabulary
-   curl https://btranslator.org/tweet/sq/vocabulary/ICT_sq
+   curl https://qtranslate.org/tweet/sq
+   curl https://qtranslate.org/tweet/sq/vocabulary
+   curl https://qtranslate.org/tweet/sq/vocabulary/ICT_sq
 
    curl -H 'Accept: application/json' \
-	https://btranslator.org/tweet/sq | python -m json.tool
+	https://qtranslate.org/tweet/sq | python -m json.tool
    #+END_EXAMPLE
 
 
@@ -835,18 +835,18 @@
      - str :: Beginning of a string.
 
    Examples:
-   - [[http://dev.btranslator.org/api-examples-php/misc/autocomplete.php]]
-   - [[http://info.btranslator.org/api-examples-js/#misc/autocomplete.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/misc/autocomplete.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#misc/autocomplete.js]]
 
    #+BEGIN_EXAMPLE
-   curl https://btranslator.org/auto/project/kd
-   curl https://btranslator.org/auto/origin/G
-   curl https://btranslator.org/auto/user/sq/d
+   curl https://qtranslate.org/auto/project/kd
+   curl https://qtranslate.org/auto/origin/G
+   curl https://qtranslate.org/auto/user/sq/d
 
-   curl https://btranslator.org/auto/string/vocabulary/ICT_sq/a
-   curl https://btranslator.org/auto/string/vocabulary/*/a
-   curl https://btranslator.org/auto/string/*/ICT_sq/a
-   curl https://btranslator.org/auto/string/*/*/a
+   curl https://qtranslate.org/auto/string/vocabulary/ICT_sq/a
+   curl https://qtranslate.org/auto/string/vocabulary/*/a
+   curl https://qtranslate.org/auto/string/*/ICT_sq/a
+   curl https://qtranslate.org/auto/string/*/*/a
    #+END_EXAMPLE
 
 
@@ -862,8 +862,8 @@
 
    Examples:
    #+BEGIN_EXAMPLE
-   curl https://btranslator.org/languages | python -m json.tool
-   curl https://btranslator.org/string_details/0f27be1118ae4807f00ed5fa21a0f17fcc3649ed | python -m json.tool
+   curl https://qtranslate.org/languages | python -m json.tool
+   curl https://qtranslate.org/string_details/0f27be1118ae4807f00ed5fa21a0f17fcc3649ed | python -m json.tool
    #+END_EXAMPLE
 
 
@@ -910,14 +910,14 @@
     #+END_EXAMPLE
 
   Examples:
-  - [[http://info.btranslator.org/api-examples-js/#oauth2/get_token.js]]
-  - [[http://info.btranslator.org/api-examples-js/#oauth2/verify_token.js]]
-  - [[http://info.btranslator.org/api-examples-js/#oauth2/get_user_profile.js]]
+  - [[http://info.qtranslate.org/api-examples-js/#oauth2/get_token.js]]
+  - [[http://info.qtranslate.org/api-examples-js/#oauth2/verify_token.js]]
+  - [[http://info.qtranslate.org/api-examples-js/#oauth2/get_user_profile.js]]
 
   For more details and examples see: https://github.com/dashohoxha/oauth2-js
 
   For PHP examples see:
-  - https://btranslator.org/api-examples-php/config.php
-  - https://btranslator.org/api-examples-php/get_access_token.php
-  - https://btranslator.org/api-examples-php/translations/add.php
+  - https://qtranslate.org/api-examples-php/config.php
+  - https://qtranslate.org/api-examples-php/get_access_token.php
+  - https://qtranslate.org/api-examples-php/translations/add.php
 

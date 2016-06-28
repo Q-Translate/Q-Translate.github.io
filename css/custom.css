@@ -48,7 +48,7 @@ a:hover {
   text-decoration: none;
 }
 
-#sites {
+#sites, #contacts {
   margin-left: 15px;
   line-height: 20px;
 }

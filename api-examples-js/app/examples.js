@@ -59,7 +59,7 @@ var load_example = function(){
     // Set the href of the button 'API'.
     var apiref = $(this).attr('apiref');
     if (apiref) {
-        var href = 'http://info.btranslator.org/api/' + apiref;
+        var href = 'http://info.qtranslate.org/api/' + apiref;
         $('#jscode-api').attr('href', href);
     }
 };

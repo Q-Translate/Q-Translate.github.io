@@ -1,4 +1,4 @@
-B-Translator.github.io
+Q-Translate.github.io
 ======================
 
-Info page for B-Translator: http://info.btranslator.org
+Info page for Q-Translate: http://info.qtranslate.org

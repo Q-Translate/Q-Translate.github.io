@@ -2,7 +2,7 @@
 layout: org-info
 ---
 <div id="content">
-<h1 class="title">B-Translator API Reference</h1>
+<h1 class="title">Q-Translate API Reference</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
@@ -101,18 +101,18 @@ week, month and year.
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/report/statistics.php">http://dev.btranslator.org/api-examples-php/report/statistics.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/report/statistics.php">http://dev.qtranslate.org/api-examples-php/report/statistics.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#report/statistics_get.js">http://info.btranslator.org/api-examples-js/#report/statistics_get.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#report/statistics_get.js">http://info.qtranslate.org/api-examples-js/#report/statistics_get.js</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#report/statistics_post.js">http://info.btranslator.org/api-examples-js/#report/statistics_post.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#report/statistics_post.js">http://info.qtranslate.org/api-examples-js/#report/statistics_post.js</a>
 </li>
 </ul>
 
 <pre class="example">
-curl 'https://btranslator.org/api/report/statistics?lng=sq&amp;origin=LibreOffice&amp;project=cui'
-curl -H 'Accept: application/json' 'https://btranslator.org/api/report/statistics?lng=sq'
-curl -H 'Content-type: application/json' -X POST https://btranslator.org/api/report/statistics -d '{"lng": "sq"}'
+curl 'https://qtranslate.org/api/report/statistics?lng=sq&amp;origin=LibreOffice&amp;project=cui'
+curl -H 'Accept: application/json' 'https://qtranslate.org/api/report/statistics?lng=sq'
+curl -H 'Content-type: application/json' -X POST https://qtranslate.org/api/report/statistics -d '{"lng": "sq"}'
 </pre>
 </div>
 </div>
@@ -153,18 +153,18 @@ contributers, etc.)
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/report/project_stats.php">http://dev.btranslator.org/api-examples-php/report/project_stats.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/report/project_stats.php">http://dev.qtranslate.org/api-examples-php/report/project_stats.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#report/project_stats_get.js">http://info.btranslator.org/api-examples-js/#report/project_stats_get.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#report/project_stats_get.js">http://info.qtranslate.org/api-examples-js/#report/project_stats_get.js</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#report/project_stats_post.js">http://info.btranslator.org/api-examples-js/#report/project_stats_post.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#report/project_stats_post.js">http://info.qtranslate.org/api-examples-js/#report/project_stats_post.js</a>
 </li>
 </ul>
 
 <pre class="example">
-curl 'https://btranslator.org/api/report/project_stats?origin=LibreOffice&amp;project=cui&amp;lng=sq'
-curl -H 'Accept: application/json' 'https://btranslator.org/api/report/project_stats?origin=LibreOffice&amp;project=cui&amp;lng=sq'
-curl -H 'Content-type: application/json' -X POST https://btranslator.org/api/report/project_stats -d '{"origin": "LibreOffice", "project": "cui", "lng": "sq"}'
+curl 'https://qtranslate.org/api/report/project_stats?origin=LibreOffice&amp;project=cui&amp;lng=sq'
+curl -H 'Accept: application/json' 'https://qtranslate.org/api/report/project_stats?origin=LibreOffice&amp;project=cui&amp;lng=sq'
+curl -H 'Content-type: application/json' -X POST https://qtranslate.org/api/report/project_stats -d '{"origin": "LibreOffice", "project": "cui", "lng": "sq"}'
 </pre>
 </div>
 </div>
@@ -211,17 +211,17 @@ Statistics about top contributors.
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/report/topcontrib.php">http://dev.btranslator.org/api-examples-php/report/topcontrib.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/report/topcontrib.php">http://dev.qtranslate.org/api-examples-php/report/topcontrib.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#report/topcontrib_get.js">http://info.btranslator.org/api-examples-js/#report/topcontrib_get.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#report/topcontrib_get.js">http://info.qtranslate.org/api-examples-js/#report/topcontrib_get.js</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#report/topcontrib_post.js">http://info.btranslator.org/api-examples-js/#report/topcontrib_post.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#report/topcontrib_post.js">http://info.qtranslate.org/api-examples-js/#report/topcontrib_post.js</a>
 </li>
 </ul>
 
 <pre class="example">
-curl -H 'Accept: application/json' 'https://btranslator.org/api/report/topcontrib?lng=sq&amp;period=week'
-curl -H 'Accept: application/json' -H 'Content-type: application/json' -X POST https://btranslator.org/api/report/topcontrib -d '{"lng": "sq", "period": "week", "size": 10}' -H 'Accept: application/json'
+curl -H 'Accept: application/json' 'https://qtranslate.org/api/report/topcontrib?lng=sq&amp;period=week'
+curl -H 'Accept: application/json' -H 'Content-type: application/json' -X POST https://qtranslate.org/api/report/topcontrib -d '{"lng": "sq", "period": "week", "size": 10}' -H 'Accept: application/json'
 </pre>
 </div>
 </div>
@@ -257,9 +257,9 @@ origin/project like this: <code>origin1/project1 origin2
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/translations/sguid.php">http://dev.btranslator.org/api-examples-php/translations/sguid.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/translations/sguid.php">http://dev.qtranslate.org/api-examples-php/translations/sguid.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#translations/get_random_sguid.js">http://info.btranslator.org/api-examples-js/#translations/get_random_sguid.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#translations/get_random_sguid.js">http://info.qtranslate.org/api-examples-js/#translations/get_random_sguid.js</a>
 </li>
 </ul>
 </div>
@@ -306,18 +306,18 @@ also be one of <code>random | translated | untranslated</code>.
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://info.btranslator.org/api-examples-js/#translations/retrieve.js">http://info.btranslator.org/api-examples-js/#translations/retrieve.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#translations/retrieve.js">http://info.qtranslate.org/api-examples-js/#translations/retrieve.js</a>
 </li>
-<li><a href="http://dev.btranslator.org/api-examples-php/translations/get.php">http://dev.btranslator.org/api-examples-php/translations/get.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/translations/get.php">http://dev.qtranslate.org/api-examples-php/translations/get.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#translations/get.js">http://info.btranslator.org/api-examples-js/#translations/get.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#translations/get.js">http://info.qtranslate.org/api-examples-js/#translations/get.js</a>
 </li>
 </ul>
 
 <pre class="example">
 curl -k -H 'Accept: application/json' \
-  'http://dev.btranslator.org/translations/sq/ee178b82f7ff3b5fb48537b834db673b42d48556'
-curl -k -H 'Accept: application/json' http://dev.btranslator.org/translations/sq/random
+  'http://dev.qtranslate.org/translations/sq/ee178b82f7ff3b5fb48537b834db673b42d48556'
+curl -k -H 'Accept: application/json' http://dev.qtranslate.org/translations/sq/random
 </pre>
 </div>
 </div>
@@ -348,9 +348,9 @@ between them.
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/translations/add.php">http://dev.btranslator.org/api-examples-php/translations/add.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/translations/add.php">http://dev.qtranslate.org/api-examples-php/translations/add.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#translations/add.js">http://info.btranslator.org/api-examples-js/#translations/add.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#translations/add.js">http://info.qtranslate.org/api-examples-js/#translations/add.js</a>
 </li>
 </ul>
 </div>
@@ -376,9 +376,9 @@ Add a vote for the given translation.
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/translations/vote.php">http://dev.btranslator.org/api-examples-php/translations/vote.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/translations/vote.php">http://dev.qtranslate.org/api-examples-php/translations/vote.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#translations/vote.js">http://info.btranslator.org/api-examples-js/#translations/vote.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#translations/vote.js">http://info.qtranslate.org/api-examples-js/#translations/vote.js</a>
 </li>
 </ul>
 </div>
@@ -404,9 +404,9 @@ Delete a translation
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/translations/add.php">http://dev.btranslator.org/api-examples-php/translations/add.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/translations/add.php">http://dev.qtranslate.org/api-examples-php/translations/add.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#translations/add.js">http://info.btranslator.org/api-examples-js/#translations/add.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#translations/add.js">http://info.qtranslate.org/api-examples-js/#translations/add.js</a>
 </li>
 </ul>
 </div>
@@ -432,9 +432,9 @@ Delete a vote from the given translation.
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/translations/vote.php">http://dev.btranslator.org/api-examples-php/translations/vote.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/translations/vote.php">http://dev.qtranslate.org/api-examples-php/translations/vote.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#translations/vote.js">http://info.btranslator.org/api-examples-js/#translations/vote.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#translations/vote.js">http://info.qtranslate.org/api-examples-js/#translations/vote.js</a>
 </li>
 </ul>
 </div>
@@ -526,17 +526,17 @@ HTML page). It gets the same parameters as <code>GET
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/translations/search.php">http://dev.btranslator.org/api-examples-php/translations/search.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/translations/search.php">http://dev.qtranslate.org/api-examples-php/translations/search.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#translations/list.js">http://info.btranslator.org/api-examples-js/#translations/list.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#translations/list.js">http://info.qtranslate.org/api-examples-js/#translations/list.js</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#translations/search.js">http://info.btranslator.org/api-examples-js/#translations/search.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#translations/search.js">http://info.qtranslate.org/api-examples-js/#translations/search.js</a>
 </li>
 </ul>
 
 <pre class="example">
 curl -k -H 'Accept: application/json' \
-     'http://dev.btranslator.org/translations/search?lng=sq&amp;words=space'
+     'http://dev.qtranslate.org/translations/search?lng=sq&amp;words=space'
 curl -k -H 'Accept: application/json' \
      'https://l10n.org.al/translations/search?lng=sq&amp;words=space'
 </pre>
@@ -567,9 +567,9 @@ that contains the items:
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/translations/submit.php">http://dev.btranslator.org/api-examples-php/translations/submit.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/translations/submit.php">http://dev.qtranslate.org/api-examples-php/translations/submit.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#translations/submit.js">http://info.btranslator.org/api-examples-js/#translations/submit.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#translations/submit.js">http://info.qtranslate.org/api-examples-js/#translations/submit.js</a>
 </li>
 </ul>
 </div>
@@ -616,7 +616,7 @@ the import) will be recorded as the author of the translation.
 This can be useful for translators if they prefer to work off-line
 with PO files. They can export the PO files of a project, work on
 them with desktop tools (like Lokalize) to translate or correct
-exported translations, and then import back to B-Translator the
+exported translations, and then import back to Q-Translate the
 translated/corrected PO files.
 </p>
 
@@ -624,9 +624,9 @@ translated/corrected PO files.
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/translations/import.php">http://dev.btranslator.org/api-examples-php/translations/import.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/translations/import.php">http://dev.qtranslate.org/api-examples-php/translations/import.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#translations/import.js">http://info.btranslator.org/api-examples-js/#translations/import.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#translations/import.js">http://info.qtranslate.org/api-examples-js/#translations/import.js</a>
 </li>
 </ul>
 </div>
@@ -680,9 +680,9 @@ Get user subscriptions.
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/project/subscribe.php">http://dev.btranslator.org/api-examples-php/project/subscribe.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/project/subscribe.php">http://dev.qtranslate.org/api-examples-php/project/subscribe.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#project/subscribe.js">http://info.btranslator.org/api-examples-js/#project/subscribe.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#project/subscribe.js">http://info.qtranslate.org/api-examples-js/#project/subscribe.js</a>
 </li>
 </ul>
 </div>
@@ -701,14 +701,14 @@ Examples:
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/project/list_all.php">http://dev.btranslator.org/api-examples-php/project/list_all.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/project/list_all.php">http://dev.qtranslate.org/api-examples-php/project/list_all.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#project/list_all.js">http://info.btranslator.org/api-examples-js/#project/list_all.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#project/list_all.js">http://info.qtranslate.org/api-examples-js/#project/list_all.js</a>
 </li>
 </ul>
 
 <pre class="example">
-curl -s https://btranslator.org/project/list/all | python -m json.tool
+curl -s https://qtranslate.org/project/list/all | python -m json.tool
 </pre>
 </div>
 </div>
@@ -752,27 +752,27 @@ JSON or TEXT (default).
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/project/list.php">http://dev.btranslator.org/api-examples-php/project/list.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/project/list.php">http://dev.qtranslate.org/api-examples-php/project/list.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#project/list.js">http://info.btranslator.org/api-examples-js/#project/list.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#project/list.js">http://info.qtranslate.org/api-examples-js/#project/list.js</a>
 </li>
 </ul>
 
 <pre class="example">
-curl -k -X POST http://dev.btranslator.org/api/project/list
-curl -k -X POST http://dev.btranslator.org/api/project/list \
+curl -k -X POST http://dev.qtranslate.org/api/project/list
+curl -k -X POST http://dev.qtranslate.org/api/project/list \
      -H "Content-type: application/json" \
      -d '{"origin": "t*"}'
 </pre>
 
 <pre class="example">
-curl 'https://btranslator.org/project/list/*/-'
-curl 'https://btranslator.org/project/list/*/-/json'
-curl 'https://btranslator.org/project/list/LibreOffice/s*'
-curl 'https://btranslator.org/project/list/LibreOffice'
-curl 'https://btranslator.org/project/list/*/nautil*'
-curl 'https://btranslator.org/project/list/*/*/json'
-curl 'https://btranslator.org/project/list'
+curl 'https://qtranslate.org/project/list/*/-'
+curl 'https://qtranslate.org/project/list/*/-/json'
+curl 'https://qtranslate.org/project/list/LibreOffice/s*'
+curl 'https://qtranslate.org/project/list/LibreOffice'
+curl 'https://qtranslate.org/project/list/*/nautil*'
+curl 'https://qtranslate.org/project/list/*/*/json'
+curl 'https://qtranslate.org/project/list'
 </pre>
 </div>
 </div>
@@ -790,7 +790,7 @@ curl 'https://btranslator.org/project/list'
 Examples:
 </p>
 <pre class="example">
-curl -s https://btranslator.org/project/langs/LibreOffice/cui | python -m json.tool
+curl -s https://qtranslate.org/project/langs/LibreOffice/cui | python -m json.tool
 </pre>
 </div>
 </div>
@@ -874,17 +874,17 @@ preferred.
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/project/export.php">http://dev.btranslator.org/api-examples-php/project/export.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/project/export.php">http://dev.qtranslate.org/api-examples-php/project/export.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#project/export.js">http://info.btranslator.org/api-examples-js/#project/export.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#project/export.js">http://info.qtranslate.org/api-examples-js/#project/export.js</a>
 </li>
 </ul>
 
 <pre class="example">
-curl -k 'http://dev.btranslator.org/project/export?origin=test&amp;project=kturtle&amp;lng=sq' &gt; test1.tgz
-curl -k http://dev.btranslator.org/project/export \
+curl -k 'http://dev.qtranslate.org/project/export?origin=test&amp;project=kturtle&amp;lng=sq' &gt; test1.tgz
+curl -k http://dev.qtranslate.org/project/export \
      -d 'origin=test&amp;project=kturtle&amp;lng=sq&amp;export_mode=original' &gt; test1.tgz
-curl -k http://dev.btranslator.org/project/export \
+curl -k http://dev.qtranslate.org/project/export \
      -d origin=test -d project=kturtle -d lng=sq \
      -d export_mode=preferred \
      -d preferred_voters=user1,user2 &gt; test1.tgz
@@ -897,7 +897,7 @@ curl -k http://dev.btranslator.org/project/export \
 <h3 id="sec-3-6">diff</h3>
 <div class="outline-text-3" id="text-3-6">
 <p>
-For more details about diffs see: <a href="https://github.com/B-Translator/btr_server/blob/master/modules/custom/btrCore/data/README.org#snapshots-and-diffs">README.org#snapshots-and-diffs</a>
+For more details about diffs see: <a href="https://github.com/Q-Translate/qtr_server/blob/master/modules/custom/qtrCore/data/README.org#snapshots-and-diffs">README.org#snapshots-and-diffs</a>
 </p>
 
 <dl class="org-dl">
@@ -918,22 +918,22 @@ missing, it returns a list of the saved diffs instead.
 Examples:
 </p>
 <pre class="example">
-curl https://btranslator.org/project/diff/LibreOffice/sw/sq
-curl https://btranslator.org/project/diff/LibreOffice/sw/sq/2 &gt; 2.diff
-curl https://btranslator.org/project/diff/LibreOffice/sw/sq/2/ediff &gt; 2.ediff
-curl https://btranslator.org/project/diff/LibreOffice/sw/sq/4 &gt; 4.diff
-curl https://btranslator.org/project/diff/LibreOffice/sw/sq/4/ediff &gt; 4.ediff
+curl https://qtranslate.org/project/diff/LibreOffice/sw/sq
+curl https://qtranslate.org/project/diff/LibreOffice/sw/sq/2 &gt; 2.diff
+curl https://qtranslate.org/project/diff/LibreOffice/sw/sq/2/ediff &gt; 2.ediff
+curl https://qtranslate.org/project/diff/LibreOffice/sw/sq/4 &gt; 4.diff
+curl https://qtranslate.org/project/diff/LibreOffice/sw/sq/4/ediff &gt; 4.ediff
 </pre>
 
 <pre class="example">
-curl https://btranslator.org/project/diff-dl/LibreOffice/sw/sq/2
-curl https://btranslator.org/project/diff-dl/LibreOffice/sw/sq/2/ediff
-curl https://btranslator.org/project/diff-dl/LibreOffice/sw/sq/4/diff
-curl https://btranslator.org/project/diff-dl/LibreOffice/sw/sq/4/ediff
+curl https://qtranslate.org/project/diff-dl/LibreOffice/sw/sq/2
+curl https://qtranslate.org/project/diff-dl/LibreOffice/sw/sq/2/ediff
+curl https://qtranslate.org/project/diff-dl/LibreOffice/sw/sq/4/diff
+curl https://qtranslate.org/project/diff-dl/LibreOffice/sw/sq/4/ediff
 </pre>
 
 <pre class="example">
-curl 'https://btranslator.org/project/diff-latest/LibreOffice/sw/sq?format=diff&amp;export_mode=preferred_by_me&amp;friends='
+curl 'https://qtranslate.org/project/diff-latest/LibreOffice/sw/sq?format=diff&amp;export_mode=preferred_by_me&amp;friends='
 </pre>
 </div>
 </div>
@@ -993,9 +993,9 @@ of <code>.pot</code>).
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/project/import.php">http://dev.btranslator.org/api-examples-php/project/import.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/project/import.php">http://dev.qtranslate.org/api-examples-php/project/import.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#project/import.js">http://info.btranslator.org/api-examples-js/#project/import.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#project/import.js">http://info.qtranslate.org/api-examples-js/#project/import.js</a>
 </li>
 </ul>
 </div>
@@ -1032,9 +1032,9 @@ type, where type can be one of <code>status</code>, <code>warning</code>, <code>
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/project/delete.php">http://dev.btranslator.org/api-examples-php/project/delete.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/project/delete.php">http://dev.qtranslate.org/api-examples-php/project/delete.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#project/delete.js">http://info.btranslator.org/api-examples-js/#project/delete.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#project/delete.js">http://info.qtranslate.org/api-examples-js/#project/delete.js</a>
 </li>
 </ul>
 </div>
@@ -1068,15 +1068,15 @@ then project functions can be used with =origin = 'vocabulary'= and
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/vocabulary/list.php">http://dev.btranslator.org/api-examples-php/vocabulary/list.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/vocabulary/list.php">http://dev.qtranslate.org/api-examples-php/vocabulary/list.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#vocabulary/list.js">http://info.btranslator.org/api-examples-js/#vocabulary/list.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#vocabulary/list.js">http://info.qtranslate.org/api-examples-js/#vocabulary/list.js</a>
 </li>
 </ul>
 
 <pre class="example">
-curl -s https://btranslator.org/vocabulary/list | python -m json.tool
-curl -s http://dev.btranslator.org/vocabulary/list | python -m json.tool
+curl -s https://qtranslate.org/vocabulary/list | python -m json.tool
+curl -s http://dev.qtranslate.org/vocabulary/list | python -m json.tool
 </pre>
 </div>
 </div>
@@ -1101,16 +1101,16 @@ Default is <code>json</code>.
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/vocabulary/export.php">http://dev.btranslator.org/api-examples-php/vocabulary/export.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/vocabulary/export.php">http://dev.qtranslate.org/api-examples-php/vocabulary/export.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#vocabulary/export.js">http://info.btranslator.org/api-examples-js/#vocabulary/export.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#vocabulary/export.js">http://info.qtranslate.org/api-examples-js/#vocabulary/export.js</a>
 </li>
 </ul>
 
 <pre class="example">
-curl -s https://btranslator.org/vocabulary/export/ICT_sq | python -m json.tool
-curl https://btranslator.org/vocabulary/export/ICT_sq/txt1
-curl https://btranslator.org/vocabulary/export/ICT_sq/org &gt; ICT_sq.org
+curl -s https://qtranslate.org/vocabulary/export/ICT_sq | python -m json.tool
+curl https://qtranslate.org/vocabulary/export/ICT_sq/txt1
+curl https://qtranslate.org/vocabulary/export/ICT_sq/org &gt; ICT_sq.org
 </pre>
 </div>
 </div>
@@ -1157,9 +1157,9 @@ term &lt;==&gt; translation1 / translation2 / translation3
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/vocabulary/import.php">http://dev.btranslator.org/api-examples-php/vocabulary/import.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/vocabulary/import.php">http://dev.qtranslate.org/api-examples-php/vocabulary/import.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#vocabulary/import.js">http://info.btranslator.org/api-examples-js/#vocabulary/import.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#vocabulary/import.js">http://info.qtranslate.org/api-examples-js/#vocabulary/import.js</a>
 </li>
 </ul>
 </div>
@@ -1204,9 +1204,9 @@ type can be one of <i>status</i>, <i>warning</i>, <i>error</i>
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/vocabulary/add_string.php">http://dev.btranslator.org/api-examples-php/vocabulary/add_string.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/vocabulary/add_string.php">http://dev.qtranslate.org/api-examples-php/vocabulary/add_string.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#vocabulary/add_string.js">http://info.btranslator.org/api-examples-js/#vocabulary/add_string.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#vocabulary/add_string.js">http://info.qtranslate.org/api-examples-js/#vocabulary/add_string.js</a>
 </li>
 </ul>
 </div>
@@ -1244,9 +1244,9 @@ type can be one of <i>status</i>, <i>warning</i>, <i>error</i>
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/vocabulary/add_string.php">http://dev.btranslator.org/api-examples-php/vocabulary/add_string.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/vocabulary/add_string.php">http://dev.qtranslate.org/api-examples-php/vocabulary/add_string.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#vocabulary/add_string.js">http://info.btranslator.org/api-examples-js/#vocabulary/add_string.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#vocabulary/add_string.js">http://info.qtranslate.org/api-examples-js/#vocabulary/add_string.js</a>
 </li>
 </ul>
 </div>
@@ -1283,9 +1283,9 @@ type, where type can be one of <code>status</code>, <code>warning</code>, <code>
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/vocabulary/delete.php">http://dev.btranslator.org/api-examples-php/vocabulary/delete.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/vocabulary/delete.php">http://dev.qtranslate.org/api-examples-php/vocabulary/delete.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#vocabulary/delete.js">http://info.btranslator.org/api-examples-js/#vocabulary/delete.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#vocabulary/delete.js">http://info.qtranslate.org/api-examples-js/#vocabulary/delete.js</a>
 </li>
 </ul>
 </div>
@@ -1312,16 +1312,16 @@ list.
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/misc/latest.php">http://dev.btranslator.org/api-examples-php/misc/latest.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/misc/latest.php">http://dev.qtranslate.org/api-examples-php/misc/latest.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#misc/latest.js">http://info.btranslator.org/api-examples-js/#misc/latest.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#misc/latest.js">http://info.qtranslate.org/api-examples-js/#misc/latest.js</a>
 </li>
 </ul>
 
 <pre class="example">
-curl https://btranslator.org/latest/sq
-curl https://btranslator.org/latest/sq/vocabulary
-curl https://btranslator.org/latest/sq/vocabulary/ICT_sq
+curl https://qtranslate.org/latest/sq
+curl https://qtranslate.org/latest/sq/vocabulary
+curl https://qtranslate.org/latest/sq/vocabulary/ICT_sq
 </pre>
 </div>
 </div>
@@ -1331,7 +1331,7 @@ curl https://btranslator.org/latest/sq/vocabulary/ICT_sq
 <h3 id="sec-5-2">rss-feed</h3>
 <div class="outline-text-3" id="text-5-2">
 <dl class="org-dl">
-<dt> GET btr/rss-feed[/$origin[/$project]] </dt><dd>Return a RSS feed of the
+<dt> GET qtr/rss-feed[/$origin[/$project]] </dt><dd>Return a RSS feed of the
 latest translations (origin and project are optional). Latest
 means yesterday.  Results are cached, so last minute
 translations may not appear on the list.
@@ -1342,23 +1342,23 @@ translations may not appear on the list.
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/misc/rss-feed.php">http://dev.btranslator.org/api-examples-php/misc/rss-feed.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/misc/rss-feed.php">http://dev.qtranslate.org/api-examples-php/misc/rss-feed.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#misc/rss-feed.js">http://info.btranslator.org/api-examples-js/#misc/rss-feed.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#misc/rss-feed.js">http://info.qtranslate.org/api-examples-js/#misc/rss-feed.js</a>
 </li>
 </ul>
 
 <pre class="example">
-curl https://l10n.org.al/btr/rss-feed
-curl https://l10n.org.al/btr/rss-feed/vocabulary
-curl https://l10n.org.al/btr/rss-feed/vocabulary/ICT_sq
+curl https://l10n.org.al/qtr/rss-feed
+curl https://l10n.org.al/qtr/rss-feed/vocabulary
+curl https://l10n.org.al/qtr/rss-feed/vocabulary/ICT_sq
 
-curl https://btranslator.net/btr/rss-feed/LibreOffice/cui/sq
-curl https://btranslator.net/btr/rss-feed/LibreOffice/cui
+curl https://qtranslate.net/qtr/rss-feed/LibreOffice/cui/sq
+curl https://qtranslate.net/qtr/rss-feed/LibreOffice/cui
 
-curl https://btranslator.org/rss-feed/sq
-curl https://btranslator.org/rss-feed/sq/LibreOffice
-curl https://btranslator.org/rss-feed/sq/LibreOffice/cui
+curl https://qtranslate.org/rss-feed/sq
+curl https://qtranslate.org/rss-feed/sq/LibreOffice
+curl https://qtranslate.org/rss-feed/sq/LibreOffice/cui
 </pre>
 </div>
 </div>
@@ -1368,7 +1368,7 @@ curl https://btranslator.org/rss-feed/sq/LibreOffice/cui
 <h3 id="sec-5-3">twitter</h3>
 <div class="outline-text-3" id="text-5-3">
 <dl class="org-dl">
-<dt> GET btr/tweet[/$origin[/$project]] </dt><dd>Return a random string and
+<dt> GET qtr/tweet[/$origin[/$project]] </dt><dd>Return a random string and
 its translations in a suitable form for the twitter (truncated
 to 100 characters).
 </dd>
@@ -1387,32 +1387,32 @@ to 100 characters).
 <b>Note:</b> This can be used in combination with <i>cli twitter
 clients</i> and with <b>cron</b> to post random tweets about
 translations.  See this script as an example:
-<a href="https://github.com/B-Translator/btr_server/blob/master/utils/twitter.sh">https://github.com/B-Translator/btr_server/blob/master/utils/twitter.sh</a>
+<a href="https://github.com/Q-Translate/qtr_server/blob/master/utils/twitter.sh">https://github.com/Q-Translate/qtr_server/blob/master/utils/twitter.sh</a>
 </p>
 
 <p>
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/misc/twitter.php">http://dev.btranslator.org/api-examples-php/misc/twitter.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/misc/twitter.php">http://dev.qtranslate.org/api-examples-php/misc/twitter.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#misc/twitter.js">http://info.btranslator.org/api-examples-js/#misc/twitter.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#misc/twitter.js">http://info.qtranslate.org/api-examples-js/#misc/twitter.js</a>
 </li>
 </ul>
 
 <pre class="example">
-curl https://l10n.org.al/btr/tweet
-curl https://l10n.org.al/btr/tweet/vocabulary
-curl https://l10n.org.al/btr/tweet/vocabulary/ICT_sq
+curl https://l10n.org.al/qtr/tweet
+curl https://l10n.org.al/qtr/tweet/vocabulary
+curl https://l10n.org.al/qtr/tweet/vocabulary/ICT_sq
 
-curl https://btranslator.net/btr/tweet/vocabulary/ICT_sq/sq
+curl https://qtranslate.net/qtr/tweet/vocabulary/ICT_sq/sq
 
-curl https://btranslator.org/tweet/sq
-curl https://btranslator.org/tweet/sq/vocabulary
-curl https://btranslator.org/tweet/sq/vocabulary/ICT_sq
+curl https://qtranslate.org/tweet/sq
+curl https://qtranslate.org/tweet/sq/vocabulary
+curl https://qtranslate.org/tweet/sq/vocabulary/ICT_sq
 
 curl -H 'Accept: application/json' \
-     https://btranslator.org/tweet/sq | python -m json.tool
+     https://qtranslate.org/tweet/sq | python -m json.tool
 </pre>
 </div>
 </div>
@@ -1466,21 +1466,21 @@ don't limit by project.
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.btranslator.org/api-examples-php/misc/autocomplete.php">http://dev.btranslator.org/api-examples-php/misc/autocomplete.php</a>
+<li><a href="http://dev.qtranslate.org/api-examples-php/misc/autocomplete.php">http://dev.qtranslate.org/api-examples-php/misc/autocomplete.php</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#misc/autocomplete.js">http://info.btranslator.org/api-examples-js/#misc/autocomplete.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#misc/autocomplete.js">http://info.qtranslate.org/api-examples-js/#misc/autocomplete.js</a>
 </li>
 </ul>
 
 <pre class="example">
-curl https://btranslator.org/auto/project/kd
-curl https://btranslator.org/auto/origin/G
-curl https://btranslator.org/auto/user/sq/d
+curl https://qtranslate.org/auto/project/kd
+curl https://qtranslate.org/auto/origin/G
+curl https://qtranslate.org/auto/user/sq/d
 
-curl https://btranslator.org/auto/string/vocabulary/ICT_sq/a
-curl https://btranslator.org/auto/string/vocabulary/*/a
-curl https://btranslator.org/auto/string/*/ICT_sq/a
-curl https://btranslator.org/auto/string/*/*/a
+curl https://qtranslate.org/auto/string/vocabulary/ICT_sq/a
+curl https://qtranslate.org/auto/string/vocabulary/*/a
+curl https://qtranslate.org/auto/string/*/ICT_sq/a
+curl https://qtranslate.org/auto/string/*/*/a
 </pre>
 </div>
 </div>
@@ -1508,8 +1508,8 @@ provider.
 Examples:
 </p>
 <pre class="example">
-curl https://btranslator.org/languages | python -m json.tool
-curl https://btranslator.org/string_details/0f27be1118ae4807f00ed5fa21a0f17fcc3649ed | python -m json.tool
+curl https://qtranslate.org/languages | python -m json.tool
+curl https://qtranslate.org/string_details/0f27be1118ae4807f00ed5fa21a0f17fcc3649ed | python -m json.tool
 </pre>
 </div>
 </div>
@@ -1568,11 +1568,11 @@ $.ajax(base_url + '/oauth2/user/profile', {
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://info.btranslator.org/api-examples-js/#oauth2/get_token.js">http://info.btranslator.org/api-examples-js/#oauth2/get_token.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#oauth2/get_token.js">http://info.qtranslate.org/api-examples-js/#oauth2/get_token.js</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#oauth2/verify_token.js">http://info.btranslator.org/api-examples-js/#oauth2/verify_token.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#oauth2/verify_token.js">http://info.qtranslate.org/api-examples-js/#oauth2/verify_token.js</a>
 </li>
-<li><a href="http://info.btranslator.org/api-examples-js/#oauth2/get_user_profile.js">http://info.btranslator.org/api-examples-js/#oauth2/get_user_profile.js</a>
+<li><a href="http://info.qtranslate.org/api-examples-js/#oauth2/get_user_profile.js">http://info.qtranslate.org/api-examples-js/#oauth2/get_user_profile.js</a>
 </li>
 </ul>
 
@@ -1584,11 +1584,11 @@ For more details and examples see: <a href="https://github.com/dashohoxha/oauth2
 For PHP examples see:
 </p>
 <ul class="org-ul">
-<li><a href="https://btranslator.org/api-examples-php/config.php">https://btranslator.org/api-examples-php/config.php</a>
+<li><a href="https://qtranslate.org/api-examples-php/config.php">https://qtranslate.org/api-examples-php/config.php</a>
 </li>
-<li><a href="https://btranslator.org/api-examples-php/get_access_token.php">https://btranslator.org/api-examples-php/get_access_token.php</a>
+<li><a href="https://qtranslate.org/api-examples-php/get_access_token.php">https://qtranslate.org/api-examples-php/get_access_token.php</a>
 </li>
-<li><a href="https://btranslator.org/api-examples-php/translations/add.php">https://btranslator.org/api-examples-php/translations/add.php</a>
+<li><a href="https://qtranslate.org/api-examples-php/translations/add.php">https://qtranslate.org/api-examples-php/translations/add.php</a>
 </li>
 </ul>
 </div>

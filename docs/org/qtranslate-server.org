@@ -1,11 +1,11 @@
 
-Some notes about installing and configuring the B-Translator server.
+Some notes about installing and configuring the Q-Translate server.
 These are mostly so that I can remember the steps later. But maybe
 they can help anybody else as well.
 
 * Server details
 
-  | Url          | https://console.developers.google.com/project/btranslator2 |
+  | Url          | https://console.developers.google.com/project/qtranslate2 |
   | Tags         | http-server, https-server                                  |
   | Machine type | g1-small (1 vCPU, 1.7 GB memory)                           |
   | Zone         | us-central1-a                                              |
@@ -63,107 +63,6 @@ they can help anybody else as well.
     #+END_EXAMPLE
 
 
-* Build chroot environments
-
-  For making tests, it may be better sometimes to work inside a chroot.
-
-** Chroot with wheezy
-
-   #+BEGIN_EXAMPLE
-   aptitude install debootstrap schroot
-   mkdir /var/chroot/
-   cd /var/chroot
-   debootstrap --variant=minbase --arch=amd64 wheezy wheezy/ http://gce_debian_mirror.storage.googleapis.com/
-
-   cp /etc/apt/sources.list wheezy/etc/apt/
-   cp /etc/apt/sources.list.d/backports.list wheezy/etc/apt/sources.list.d/
-
-   cp /etc/resolv.conf wheezy/etc/resolv.conf
-   mount -o bind /proc wheezy/proc
-
-   chroot wheezy/
-   apt-get update
-   apt-get upgrade
-
-   apt-get -y install language-pack-en
-   update-locale
-   apt-get -y install vim aptitude git openssh-server
-
-   echo wheezy >  /etc/debian_chroot
-   #+END_EXAMPLE
-
-
-** Chroot with trusty
-
-   #+BEGIN_EXAMPLE
-   ln -s /usr/share/debootstrap/scripts/{gutsy,trusty}
-
-   cd /var/chroot
-   debootstrap --variant=minbase --arch=amd64 trusty trusty/ http://archive.ubuntu.com/ubuntu
-
-   cat <<EOF > trusty/etc/apt/sources.list
-   deb http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse
-   deb http://archive.ubuntu.com/ubuntu trusty-updates main restricted universe multiverse
-   deb http://security.ubuntu.com/ubuntu trusty-security main restricted universe multiverse
-   EOF
-
-   cp /etc/resolv.conf trusty/etc/resolv.conf
-   mount -o bind /proc trusty/proc
-
-   chroot trusty/
-   apt-get update
-   apt-get -y install ubuntu-minimal
-   apt-get upgrade
-
-   apt-get -y install language-pack-en
-   update-locale
-   apt-get -y install vim aptitude git openssh-server docker.io
-   echo trusty >  /etc/debian_chroot
-   #+END_EXAMPLE
-
-
-** Script for starting and stoping a chroot environment
-
-   File ~chroot.sh~:
-   #+BEGIN_EXAMPLE
-   #!/bin/bash
-
-   if [ $# -ne 2 ]
-   then
-       echo " * Usage: $0 {start|stop} target"
-       exit 0
-   fi
-
-   CHROOT=/var/chroot/$2
-
-   case "$1" in
-       start)
-	   # mount /proc etc. to the CHROOT
-	   for dir in proc dev sys dev/pts
-	   do
-	       mount -o bind /$dir $CHROOT/$dir
-	   done
-	   chroot $CHROOT/ mount -a
-	   ;;
-
-       stop)
-	   # kill any processes that are running on CHROOT
-	   chroot_pids=$(for p in /proc/*/root; do ls -l $p; done | grep $CHROOT | cut -d'/' -f3)
-	   test -z "$chroot_pids" || (kill -9 $chroot_pids; sleep 2)
-
-	   # umount /proc etc. from the CHROOT
-	   chroot $CHROOT/ umount -a
-	   for dir in dev/pts sys dev proc
-	   do
-	       umount $CHROOT/$dir
-	   done
-	   ;;
-       *)
-	   echo " * Usage: $0 {start|stop} target"
-   esac
-   #+END_EXAMPLE
-
-
 * Container for 'bind9'
 
   I manage my domains with a *hidden*, *master*, *authoritative-only*
@@ -219,20 +118,20 @@ they can help anybody else as well.
     cd wsproxy/
     cd config/etc/apache2/sites-available/
 
-    vim btr.conf
-    vim btr-ssl.conf
+    vim qtr.conf
+    vim qtr-ssl.conf
     vim bcl.conf
     vim bcl-ssl.conf
 
-    cp btr.conf btr_dev.conf
-    cp btr-ssl.conf btr_dev-ssl.conf
-    vim btr_dev.conf
-    vim btr_dev-ssl.conf
+    cp qtr.conf qtr_dev.conf
+    cp qtr-ssl.conf qtr_dev-ssl.conf
+    vim qtr_dev.conf
+    vim qtr_dev-ssl.conf
 
-    cp btr.conf btr_test.conf
-    cp btr-ssl.conf btr_test-ssl.conf
-    vim btr_test.conf
-    vim btr_test-ssl.conf
+    cp qtr.conf qtr_test.conf
+    cp qtr-ssl.conf qtr_test-ssl.conf
+    vim qtr_test.conf
+    vim qtr_test-ssl.conf
 
     cp bcl.conf bcl_dev.conf
     cp bcl-ssl.conf bcl_dev-ssl.conf
@@ -263,7 +162,7 @@ they can help anybody else as well.
   + Enable each site:
     #+BEGIN_EXAMPLE
     cd ../sites-enabled/
-    for site in btr btr_dev btr_test bcl bcl_dev bcl_test sq sq_dev sq_test
+    for site in qtr qtr_dev qtr_test bcl bcl_dev bcl_test sq sq_dev sq_test
     do
 	ln -s ../sites-available/$site.conf .
 	ln -s ../sites-available/$site-ssl.conf .
@@ -287,28 +186,28 @@ they can help anybody else as well.
 
 * Create the other containers
 
-  We need a container for *btr_server* and one or more containers
-  for *btr_client* (one for each language).
+  We need a container for *qtr_server* and one or more containers
+  for *qtr_client* (one for each language).
 
-  + Get the docker images of btr_server and btr_client:
+  + Get the docker images of qtr_server and qtr_client:
     #+BEGIN_EXAMPLE
-    docker pull btranslator/btr_client:v2.2
-    docker pull btranslator/btr_server:v2.2
+    docker pull qtranslate/qtr_client:v2.2
+    docker pull qtranslate/qtr_server:v2.2
     #+END_EXAMPLE
 
   + Create the containers:
     #+BEGIN_EXAMPLE
-    docker run -d --name=btr --hostname=btranslator.org \
-	       -v /data:/data btranslator/btr_server:v2.2
+    docker run -d --name=qtr --hostname=qtranslate.org \
+	       -v /data:/data qtranslate/qtr_server:v2.2
 
-    docker run -d --name=sq --hostname=sq.btranslator.org \
-		btranslator/btr_client:v2.2
+    docker run -d --name=sq --hostname=sq.qtranslate.org \
+		qtranslate/qtr_client:v2.2
     #+END_EXAMPLE
 
-  + Customize the configuration of *btr*:
+  + Customize the configuration of *qtr*:
     #+BEGIN_EXAMPLE
-    docker-enter btr
-    cd /usr/local/src/btr_server/
+    docker-enter qtr
+    cd /usr/local/src/qtr_server/
     vim install/setting.sh
     install/{config.sh,settings.sh}
     #+END_EXAMPLE
@@ -316,7 +215,7 @@ they can help anybody else as well.
   + Customize the configuration of *sq*:
     #+BEGIN_EXAMPLE
     docker-enter sq
-    cd /usr/local/src/btr_client/
+    cd /usr/local/src/qtr_client/
     vim install/setting.sh
     install/{config.sh,settings.sh}
     #+END_EXAMPLE
@@ -326,69 +225,28 @@ they can help anybody else as well.
   + Make sure that containers start automatically on reboot.  Add this
     line at ~/etc/rc.local~:
     #+BEGIN_EXAMPLE
-    docker start bind9 wsproxy btr sq wsproxy
+    docker start bind9 wsproxy qtr sq wsproxy
     #+END_EXAMPLE
-
-
-* Install SSL certificates
-
-  I have installed SSL certificates for the domains =btranslator.org=
-  and =l10n.org.al= both on *wsproxy* and on *btr* containers. They
-  are placed on the directories ~etc/ssl/certs/~ and
-  ~etc/ssl/private/~, like this:
-  #+BEGIN_EXAMPLE
-  cp btranslator_org.crt        wsproxy/config/etc/ssl/certs/
-  cp btranslator_org.ca-bundle  wsproxy/config/etc/ssl/certs/
-  cp btranslator_org.key        wsproxy/config/etc/ssl/private/
-
-  cp l10n_org_al.crt        wsproxy/config/etc/ssl/certs/
-  cp l10n_org_al.ca-bundle  wsproxy/config/etc/ssl/certs/
-  cp l10n_org_al.key        wsproxy/config/etc/ssl/private/
-  #+END_EXAMPLE
-
-  The private keys should not be readable for everyone:
-  #+BEGIN_EXAMPLE
-  chmod 600 wsproxy/config/etc/ssl/private/btranslator_org.key
-  chmod 600 wsproxy/config/etc/ssl/private/l10n_org_al.key
-  #+END_EXAMPLE
-
-  Apache directives on the config file
-  ~wsproxy/config/etc/apache2/sites-available/btr-ssl.conf~:
-  #+BEGIN_EXAMPLE
-  SSLCertificateFile      /etc/ssl/certs/btranslator_org.crt
-  SSLCertificateKeyFile   /etc/ssl/private/btranslator_org.key
-  SSLCertificateChainFile /etc/ssl/certs/btranslator_org.ca-bundle
-  #+END_EXAMPLE
-
-  Apache directives on the config file
-  ~wsproxy/config/etc/apache2/sites-available/bcl-ssl.conf~:
-  #+BEGIN_EXAMPLE
-  SSLCertificateFile      /etc/ssl/certs/l10n_org_al.crt
-  SSLCertificateKeyFile   /etc/ssl/private/l10n_org_al.key
-  SSLCertificateChainFile /etc/ssl/certs/l10n_org_al.ca-bundle
-  #+END_EXAMPLE
-
-  Then restart container wsproxy: =docker restart wsproxy=.
 
 
 * Transfer translation data and users
 
   #+BEGIN_EXAMPLE
-  drush @btr sql-dump --database=btr_db --result-file=$(pwd)/data.sql --gzip
+  drush @qtr sql-dump --database=qtr_db --result-file=$(pwd)/data.sql --gzip
   gdrive upload -f data.sql.gz
 
   gdrive download --pop
   gunzip data.sql.gz
-  drush @btr sql-query --database=btr_db --file=$(pwd)/data.sql
+  drush @qtr sql-query --database=qtr_db --file=$(pwd)/data.sql
   #+END_EXAMPLE
 
   #+BEGIN_EXAMPLE
   cd /var/www/data/db/
-  ./users-export-btr.sh
+  ./users-export-qtr.sh
   ./users-export-bcl.sh
 
   cd /var/www/data/db/
-  ./users-import.sh @btr $(pwd)/users-btr-20141002.sql.gz
+  ./users-import.sh @qtr $(pwd)/users-qtr-20141002.sql.gz
   ./users-import.sh @bcl $(pwd)/users-bcl-20141002.sql.gz
   #+END_EXAMPLE
 
@@ -441,11 +299,11 @@ they can help anybody else as well.
 
 ** Fix the configuration of sites
 
-   Update the function =btr_get_sites()= on
-   ~modules/custom/btrCore/includes/sites.inc~:
+   Update the function =qtr_get_sites()= on
+   ~modules/custom/qtrCore/includes/sites.inc~:
    #+BEGIN_EXAMPLE
-   cd /var/www/btr/profiles/btr_server/
-   vim modules/custom/btrCore/includes/sites.inc
+   cd /var/www/qtr/profiles/qtr_server/
+   vim modules/custom/qtrCore/includes/sites.inc
    #+END_EXAMPLE
 
 
@@ -454,7 +312,7 @@ they can help anybody else as well.
    #+BEGIN_EXAMPLE
    aptitude install fortunes
    ls /usr/share/games/fortunes/
-   vim /var/www/btr/profiles/btr_server/utils/fortune.sh
+   vim /var/www/qtr/profiles/qtr_server/utils/fortune.sh
    #+END_EXAMPLE
 
 ** Transfer the old site to the new one

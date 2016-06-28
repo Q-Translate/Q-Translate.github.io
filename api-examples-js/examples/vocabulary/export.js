@@ -3,9 +3,9 @@ var download = function (url) {
 };
 
 // Download as a text list (in different formats).
-download('https://btranslator.org/vocabulary/export/ICT_sq/txt1');
-download('https://btranslator.org/vocabulary/export/ICT_sq/txt2');
-download('https://btranslator.org/vocabulary/export/ICT_sq/org');
+download('https://qtranslate.org/vocabulary/export/ICT_sq/txt1');
+download('https://qtranslate.org/vocabulary/export/ICT_sq/txt2');
+download('https://qtranslate.org/vocabulary/export/ICT_sq/org');
 
 // Get in JSON format.
-http_request('https://btranslator.org/vocabulary/export/ICT_sq');
+http_request('https://qtranslate.org/vocabulary/export/ICT_sq');
