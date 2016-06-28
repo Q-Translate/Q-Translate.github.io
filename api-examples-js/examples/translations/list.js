@@ -1,2 +1,2 @@
 // GET api/translations
-http_request('/api/translations?lng=sq&words=file&page=2');
+http_request('/api/translations?lng=en&words=unseen&chapter=2');
