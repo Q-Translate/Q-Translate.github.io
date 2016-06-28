@@ -10,142 +10,89 @@
 * report
 
 
-** statistics
+** stats
 
-   General statistics (number of votes and translations) for the last
+   General statistics (number of likes and translations) for the last
    week, month and year.
 
-   + GET api/report/statistics ::
+   + GET api/report/stats ::
      - lng :: language of translations
-     - origin :: (optional) origin of the project 
-     - project :: (optional) name of the project 	       
 
-   + POST api/report/statistics ::
+   + POST api/report/stats ::
      - lng :: language of translations
-     - origin :: (optional) origin of the project 
-     - project :: (optional) name of the project 	       
 
 
    Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/report/statistics.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#report/statistics_get.js]]
-   - [[http://info.qtranslate.org/api-examples-js/#report/statistics_post.js]]
+   - [[https://dev.qtranslate.org/api-examples-php/report/stats.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#report/stats_get.js]]
+   - [[http://info.qtranslate.org/api-examples-js/#report/stats_post.js]]
 
    #+begin_example
-   curl 'https://qtranslate.org/api/report/statistics?lng=sq&origin=LibreOffice&project=cui'
-   curl -H 'Accept: application/json' 'https://qtranslate.org/api/report/statistics?lng=sq'
-   curl -H 'Content-type: application/json' -X POST https://qtranslate.org/api/report/statistics -d '{"lng": "sq"}'
+   curl -H 'Accept: application/json' \
+        'https://qtranslate.org/api/report/stats?lng=en' | python -m json.tool
+   curl -H 'Content-type: application/json' \
+        -X POST https://qtranslate.org/api/report/stats \
+        -d '{"lng": "sq"}' | python -m json.tool
    #+end_example
 
 
-** project_stats
+** topusers
 
-   Getting project details and statistics (number of translated and
-   untranslated strings, number of votes and translations, users and
-   contributers, etc.)
-
-   + GET api/report/project_stats ::
-     - origin :: origin of the project 
-     - project :: name of the project 	       
-     - lng :: language of translations
-
-   + POST api/report/project_stats ::
-     - origin :: origin of the project 
-     - project :: name of the project 	       
-     - lng :: language of translations
-
-   Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/report/project_stats.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#report/project_stats_get.js]]
-   - [[http://info.qtranslate.org/api-examples-js/#report/project_stats_post.js]]
-
-   #+begin_example
-   curl 'https://qtranslate.org/api/report/project_stats?origin=LibreOffice&project=cui&lng=sq'
-   curl -H 'Accept: application/json' 'https://qtranslate.org/api/report/project_stats?origin=LibreOffice&project=cui&lng=sq'
-   curl -H 'Content-type: application/json' -X POST https://qtranslate.org/api/report/project_stats -d '{"origin": "LibreOffice", "project": "cui", "lng": "sq"}'
-   #+end_example
-
-
-** topcontrib
-
-   Statistics about top contributors.
+   Statistics about top contributing users.
 
    + GET api/report/topcontrib ::
      - lng :: language of translations
      - period :: period of report (last =day | week | month | year=)
      - size :: number of results (top contributers), between 5 and 100
-     - origin :: (optional) origin of the project 
-     - project :: (optional) name of the project 	       
 
    + POST api/report/topcontrib ::
      - lng :: language of translations
      - period :: period of report (last =day | week | month | year=)
      - size :: number of results (top contributers), between 5 and 100
-     - origin :: (optional) origin of the project 
-     - project :: (optional) name of the project 
 
    Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/report/topcontrib.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#report/topcontrib_get.js]]
-   - [[http://info.qtranslate.org/api-examples-js/#report/topcontrib_post.js]]
+   - [[https://dev.qtranslate.org/api-examples-php/report/topusers.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#report/topusers_get.js]]
+   - [[http://info.qtranslate.org/api-examples-js/#report/topusers_post.js]]
 
    #+begin_example
-   curl -H 'Accept: application/json' 'https://qtranslate.org/api/report/topcontrib?lng=sq&period=week'
-   curl -H 'Accept: application/json' -H 'Content-type: application/json' -X POST https://qtranslate.org/api/report/topcontrib -d '{"lng": "sq", "period": "week", "size": 10}' -H 'Accept: application/json'
+   curl -H 'Accept: application/json' \
+        'https://qtranslate.org/api/report/topusers?lng=en&period=week' \
+        | python -m json.tool
+   curl -H 'Accept: application/json' -H 'Content-type: application/json' \
+        -X POST https://qtranslate.org/api/report/topusers \
+        -d '{"lng": "en", "period": "week", "size": 10}' \
+        | python -m json.tool
    #+end_example
-   
+
 
 * translations
 
-
-** get_random_sguid
-
-   Get the sguid of a random string according to the target.
-
-   + POST api/translations/get_random_sguid ::
-     - target :: Can be one of: =random | translated | untranslated=
-     - lng :: Code of the language (required for translated and untranslated)
-     - scope :: (optional) Restricts the pool of selection to the
-         given list of project. It is a space separated list of
-         origin/project like this: =origin1/project1 origin2
-         origin1/project2=
-
-   Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/translations/sguid.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#translations/get_random_sguid.js]]
-
-
 ** get
 
-   Get a string, along with its translations, votes and other details.
+   Get a verse, along with its translations, likes and other details.
 
-   + GET api/translations/$sguid ::
-     - sguid :: The string (globally unique) id, calculated as:
-                =$sguid = sha1($string . $context)= It can also be:
-                =random | translated | untranslated=.
-     - lng :: The language of translations, like fr, de, etc.
+   + GET api/translations/$selector ::
+     - selector :: Translation selector, in the form: chapter,verse,lng
 
    + POST api/translations/get ::
-     - sguid :: The string (globally unique) id, calculated as:
-                =$sguid = sha1($string . $context)= It can also be:
-                =random | translated | untranslated=.
-     - lng :: The language of translations, like fr, de, etc.
-
-   + GET translations/$lng/$sguid :: Returns the details of a string
-     and its translations.  If the request header =Accept:
-     application/json= is set, then the output will be in JSON
-     (otherwise it will be an HTML page). The parameter /$sguid/ can
-     also be one of =random | translated | untranslated=.
+     - chapter :: Chapter number.
+     - verse :: Verse number.
+     - lng :: The language of translations, like en, fr, de, etc.
 
    Examples:
    - [[http://info.qtranslate.org/api-examples-js/#translations/retrieve.js]]
-   - [[http://dev.qtranslate.org/api-examples-php/translations/get.php]]
    - [[http://info.qtranslate.org/api-examples-js/#translations/get.js]]
+   - [[https://dev.qtranslate.org/api-examples-php/translations/get.php]]
 
    #+BEGIN_EXAMPLE
-   curl -k -H 'Accept: application/json' \
-     'http://dev.qtranslate.org/translations/sq/ee178b82f7ff3b5fb48537b834db673b42d48556'
-   curl -k -H 'Accept: application/json' http://dev.qtranslate.org/translations/sq/random
+   curl -H 'Accept: application/json' \
+        'https://dev.qtranslate.org/api/translations/2,3,sq' \
+        | python -m json.tool
+   curl -H 'Content-type: application/json' \
+        -X POST https://qtranslate.org/api/translations/get
+        -d '{"chapter": "2", "verse": "3", "lng": "en"}' \
+        | python -m json.tool
    #+END_EXAMPLE
 
 
@@ -168,16 +115,16 @@
    - [[http://info.qtranslate.org/api-examples-js/#translations/add.js]]
 
 
-** vote
+** like
 
-   Add a vote for the given translation.
+   Add a like for the given translation.
 
-   + POST api/translations/vote ::
+   + POST api/translations/like ::
      - tguid :: ID of the translation
 
    Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/translations/vote.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#translations/vote.js]]
+   - [[http://dev.qtranslate.org/api-examples-php/translations/like.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#translations/like.js]]
 
 
 ** del
@@ -190,18 +137,6 @@
    Examples:
    - [[http://dev.qtranslate.org/api-examples-php/translations/add.php]]
    - [[http://info.qtranslate.org/api-examples-js/#translations/add.js]]
-
-
-** del_vote
-
-   Delete a vote from the given translation.
-
-   + POST api/translations/del_vote ::
-     - tguid :: ID of the translation
-
-   Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/translations/vote.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#translations/vote.js]]
 
 
 ** search
@@ -329,524 +264,56 @@
    - [[http://info.qtranslate.org/api-examples-js/#translations/import.js]]
 
 
-* project
-
-
-** subscribe
-
-   Subscribe user to a project.
-
-   + POST api/project/subscribe ::
-     - origin :: Origin of the project.
-     - project :: Name of the project.
-
-   Unsubscribe user from a project.
-
-   + POST api/project/unsubscribe ::
-     - origin :: Origin of the project.
-     - project :: Name of the project.
-
-   Get user subscriptions.
-
-   + POST api/project/subscriptions ::
-
-   Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/project/subscribe.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#project/subscribe.js]]
-
-
-** list/all
-
-   + GET project/list/all ::
-     Return a full list of all the imported projects and languages.
-
-   Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/project/list_all.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#project/list_all.js]]
-
-   #+BEGIN_EXAMPLE
-   curl -s https://qtranslate.org/project/list/all | python -m json.tool
-   #+END_EXAMPLE
-
-
-** list
-
-   Get a list of existing projects, filtered by origin/project.
-
-   + POST api/project/list ::
-     - origin :: Filter by origin.
-     - project :: Filter by project.
-
-     Parameters *origin* and *project* can contain =*=, which is
-     replaced by =%= (for LIKE matches).
-
-     If *project* is =-= then only a list of 'origin' is outputed,
-     otherwise a list of 'origin/project'.
-
-   + GET project/list/$origin/$project[/$format] ::
-     Return a plain-text list of all the imported projects, filtered
-     by the given origin/project. Parameters *origin* and *project*
-     can contain =*=, which is replaced by =%= (for LIKE matches).  If
-     *project* is =-= then only a list of 'origin' is outputed,
-     otherwise a list of 'origin/project'.  The third variable can be
-     JSON or TEXT (default).
-
-   Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/project/list.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#project/list.js]]
-
-   #+BEGIN_EXAMPLE
-   curl -k -X POST http://dev.qtranslate.org/api/project/list
-   curl -k -X POST http://dev.qtranslate.org/api/project/list \
-	-H "Content-type: application/json" \
-	-d '{"origin": "t*"}'
-   #+END_EXAMPLE
-
-   #+BEGIN_EXAMPLE
-   curl 'https://qtranslate.org/project/list/*/-'
-   curl 'https://qtranslate.org/project/list/*/-/json'
-   curl 'https://qtranslate.org/project/list/LibreOffice/s*'
-   curl 'https://qtranslate.org/project/list/LibreOffice'
-   curl 'https://qtranslate.org/project/list/*/nautil*'
-   curl 'https://qtranslate.org/project/list/*/*/json'
-   curl 'https://qtranslate.org/project/list'
-   #+END_EXAMPLE
-
-
-** langs
-
-   + GET project/langs/$origin/$project ::
-     Get a list of languages for the given origin/project.
-
-   Examples:
-   #+BEGIN_EXAMPLE
-   curl -s https://qtranslate.org/project/langs/LibreOffice/cui | python -m json.tool
-   #+END_EXAMPLE
-
-
-** export
-
-   + POST api/project/export :: Schedule a project for export. When
-     the request is completed, the user will be notified by
-     email. Accepts these parameters:
-
-     - origin ::
-         The origin of the project.
-     - project ::
-         The name of the project.
-     - lng ::
-         Translation to be exported.
-     - export_mode ::
-         The export mode that should be used. It can be one of:
-         =original | most_voted | preferred=.
-         - The mode =original= exports the translations of the
-           original files that were imported.
-         - The mode =most_voted= exports the translations with the
-           highest number of votes.
-         - The mode =preferred= gives precedence to the translations
-           voted by a user or a list of users, despite the number of
-           votes.
-     - preferred_voters ::
-         Comma separated list of usernames. Used only when /export_mode/
-         is =preferred=.
-
-   + GET/POST project/export :: Return an archive of PO
-     files for a given origin/project/lng. Does not allow concurrent
-     exports because they may affect the performance of the server.
-     Parameters are received from the request (either GET or
-     POST). They are:
-     - origin ::
-         Origin of the project.
-     - project ::
-         The name of the project.
-     - lng ::
-         Translation to be exported.
-     - export_mode ::
-         Mode of export: =most_voted | preferred | original=
-
-         Default is =most_voted= which exports the most voted
-         translations and suggestions.
-
-         The export mode =original= exports the translations of the
-         original file that was imported (useful for making diffs).
-
-         The export mode =preferred= gives priority to translations
-         that are voted by a certain user or a group of users. It
-         requires an additional argument (preferred_voters) to specify
-         the user (or a list of users) whose translations are
-         preferred.
-     - preferred_voters ::
-         Comma separated list of usernames of the preferred voters.
-
-   Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/project/export.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#project/export.js]]
-
-   #+BEGIN_EXAMPLE
-   curl -k 'http://dev.qtranslate.org/project/export?origin=test&project=kturtle&lng=sq' > test1.tgz
-   curl -k http://dev.qtranslate.org/project/export \
-	-d 'origin=test&project=kturtle&lng=sq&export_mode=original' > test1.tgz
-   curl -k http://dev.qtranslate.org/project/export \
-	-d origin=test -d project=kturtle -d lng=sq \
-	-d export_mode=preferred \
-	-d preferred_voters=user1,user2 > test1.tgz
-   #+END_EXAMPLE
-
-
-** diff
-
-   For more details about diffs see: [[https://github.com/Q-Translate/qtr_server/blob/master/modules/custom/qtrCore/data/README.org#snapshots-and-diffs][README.org#snapshots-and-diffs]]
-
-   + GET project/diff/$origin/$project/$lng[/$nr[/$ediff]] ::
-     Return as plain-text the diff of the PO file for a given
-     origin/project/lng, which contains the latest most-voted
-     suggestions since the last snapshot. If the parameter *$nr* is
-     missing, it returns a list of the saved diffs instead.
-
-   + GET project/diff-dl/$origin/$project/$lng[/$nr[/$ediff]] ::
-     Similar to project_diff, but return a file for download (not plain text).
-
-   + GET project/diff-latest/$origin/$project/$lng?format=...&export_mode=...&friends=... ::
-     Export the latest most voted translations and make the diffs with the last snapshot.
-
-   Examples:
-   #+BEGIN_EXAMPLE
-   curl https://qtranslate.org/project/diff/LibreOffice/sw/sq
-   curl https://qtranslate.org/project/diff/LibreOffice/sw/sq/2 > 2.diff
-   curl https://qtranslate.org/project/diff/LibreOffice/sw/sq/2/ediff > 2.ediff
-   curl https://qtranslate.org/project/diff/LibreOffice/sw/sq/4 > 4.diff
-   curl https://qtranslate.org/project/diff/LibreOffice/sw/sq/4/ediff > 4.ediff
-   #+END_EXAMPLE
-
-   #+BEGIN_EXAMPLE
-   curl https://qtranslate.org/project/diff-dl/LibreOffice/sw/sq/2
-   curl https://qtranslate.org/project/diff-dl/LibreOffice/sw/sq/2/ediff
-   curl https://qtranslate.org/project/diff-dl/LibreOffice/sw/sq/4/diff
-   curl https://qtranslate.org/project/diff-dl/LibreOffice/sw/sq/4/ediff
-   #+END_EXAMPLE
-
-   #+BEGIN_EXAMPLE
-   curl 'https://qtranslate.org/project/diff-latest/LibreOffice/sw/sq?format=diff&export_mode=preferred_by_me&friends='
-   #+END_EXAMPLE
-
-
-** import
-
-   Create a project or update an existing one by importing the POT and
-   PO files of the project.
-
-
-   + POST api/project/import ::
-     - origin ::
-         The origin of the project that will be imported.
-     - project ::
-         The name of the project that will be imported.
-     - file ::
-         Archive of POT/PO files (tgz, bz2, 7z, zip).
-
-   Returns associative array containing:
-     - messages ::
-         Array of notification messages; each notification message
-         is an array of a message and a type, where type can be one of
-         =status=, =warning=, =error=.
-
-   The structure of the uploaded archive file:
-   - Acceptable archive types: tgz, bz2, 7z, zip
-   - The POT files should be placed in the subfolder ~pot/~, directly
-     in the root folder of the archive.
-   - The PO files of a language should be placed in the subfolder
-     named after the code of that language (for example: ~sq/~, ~de/~,
-     ~fr/~, etc.)
-   - The path and name of each PO file should be the same as the
-     corresponding POT file, except for the extension (=.po= instead
-     of =.pot=).
-
-   Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/project/import.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#project/import.js]]
-
-
-** delete
-
-   Delete a project.
-
-   + POST api/project/delete ::
-     - origin ::
-         The origin of the project that will be deleted.
-     - project ::
-         The name of the project that will be deleted.
-
-   Returns associative array containing:
-     - message ::
-	 Notification message, which is an array of a message and a
-         type, where type can be one of =status=, =warning=, =error=.
-
-   Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/project/delete.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#project/delete.js]]
-
-
-* vocabulary
-
-  Vocabularies are a special kind of projects. So all the functions
-  that work for projects can be used for vocabularies as well. For
-  example, if we have the vocabulary named =test1= of language =sq=,
-  then project functions can be used with =origin = 'vocabulary'= and
-  =project = 'test1_sq'=. Also, the context of each string will be
-  =test1_sq=.
-
-
-** list
-
-   + GET vocabulary/list ::
-     Return a list of vocabularies in JSON format.
-
-   Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/vocabulary/list.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#vocabulary/list.js]]
-
-   #+BEGIN_EXAMPLE
-   curl -s https://qtranslate.org/vocabulary/list | python -m json.tool
-   curl -s http://dev.qtranslate.org/vocabulary/list | python -m json.tool
-   #+END_EXAMPLE
-
-
-** export
-
-   + GET vocabulary/export/$vocabulary[/$format] ::
-     Return the list of terms and translations of a vocabulary.
-     - $vocabulary ::
-         The name of the vocabulary project (which ends in =_lng=).
-     - $format ::
-         The output format: =json | txt1 | txt2 | org=.
-         Default is =json=.
-
-   Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/vocabulary/export.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#vocabulary/export.js]]
-
-   #+BEGIN_EXAMPLE
-   curl -s https://qtranslate.org/vocabulary/export/ICT_sq | python -m json.tool
-   curl https://qtranslate.org/vocabulary/export/ICT_sq/txt1
-   curl https://qtranslate.org/vocabulary/export/ICT_sq/org > ICT_sq.org
-   #+END_EXAMPLE
-
-
-** import
-
-   Create a vocabulary or update an existing one.
-
-   + POST api/vocabulary/import ::
-     - name ::
-         The name of the vocabulary.
-     - lng ::
-         The language of the vocabulary.
-     - file ::
-         File of terms and translations.
-
-   Returns associative array containing:
-     - messages ::
-         Array of notification messages; each notification message
-         is an array of a message and a type, where type can be one of
-         =status=, =warning=, =error=.
-
-   The format of the uploaded text file is the same as the exported
-   TXT1 file, where each line is like this:
-   #+BEGIN_EXAMPLE
-   term <==> translation1 / translation2 / translation3
-   #+END_EXAMPLE
-
-   Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/vocabulary/import.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#vocabulary/import.js]]
-
-
-** add_string
-
-   Add a new string to a vocabulary.
-
-   + POST api/vocabulary/add_string ::
-     - name ::
-         The name of the vocabulary.
-     - lng ::
-         The language of the vocabulary.
-     - string ::
-         String to be added.
-     - notify :: (optional)
-         It TRUE, notify subscribers about the new string. Default is TRUE.
- 
-     Returns associative array containing:
-     - sguid :: The sguid of the new string, or NULL if such a string
-                already exists.
-     - messages :: Array of notification messages; each notification
-                   message is an array of a message and a type, where
-                   type can be one of /status/, /warning/, /error/
-
-   Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/vocabulary/add_string.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#vocabulary/add_string.js]]
-
-
-** del_string
-
-   Delete a string from a vocabulary.
-
-   + POST api/project/del_string ::
-     - name ::
-         The name of the vocabulary.
-     - lng ::
-         The language of the vocabulary.
-     - sguid ::
-         ID of the string to be deleted.
-
-     Returns associative array containing:
-     - messages :: Array of notification messages; each notification
-                   message is an array of a message and a type, where
-                   type can be one of /status/, /warning/, /error/
-   Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/vocabulary/add_string.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#vocabulary/add_string.js]]
-
-
-** delete
-
-   Delete a vocabulary.
-
-   + POST api/vocabulary/delete ::
-     - name ::
-         The name of the vocabulary.
-     - lng ::
-         The language of the vocabulary.
-
-   Returns associative array containing:
-     - message ::
-	 Notification message, which is an array of a message and a
-         type, where type can be one of =status=, =warning=, =error=.
-
-   Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/vocabulary/delete.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#vocabulary/delete.js]]
-
-
 * misc
 
 
 ** latest
 
-   + GET latest/$lng[/$origin[/$project]] :: Return a JSON array of
-        the latest translations for the given language (origin and
-        project are optional). Latest means yesterday.  Results are
-        cached, so last minute translations may not appear on the
-        list.
+   + GET latest/$lng :: Return the latest translations in JSON format.
+        Latest means since yesterday.  Results are cached, so last minute
+        translations may not appear on the list.
+     - lng :: The language of translations.
 
    Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/misc/latest.php]]
+   - [[https://dev.qtranslate.org/api-examples-php/misc/latest.php]]
    - [[http://info.qtranslate.org/api-examples-js/#misc/latest.js]]
 
    #+BEGIN_EXAMPLE
-   curl https://qtranslate.org/latest/sq
-   curl https://qtranslate.org/latest/sq/vocabulary
-   curl https://qtranslate.org/latest/sq/vocabulary/ICT_sq
+   curl https://qtranslate.org/latest/en | python -m json.tool
+   curl https://en.btranslate.net/qtr/latest | python -m json.tool
    #+END_EXAMPLE
 
 
 ** rss-feed
 
-   + GET qtr/rss-feed[/$origin[/$project]] :: Return a RSS feed of the
-        latest translations (origin and project are optional). Latest
-        means yesterday.  Results are cached, so last minute
+   + GET rss-feed/$lng :: Return a RSS feed of the latest translations.
+        Latest means since yesterday.  Results are cached, so last minute
         translations may not appear on the list.
+     - lng :: The language of translations.
 
    Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/misc/rss-feed.php]]
+   - [[https://dev.qtranslate.org/api-examples-php/misc/rss-feed.php]]
    - [[http://info.qtranslate.org/api-examples-js/#misc/rss-feed.js]]
 
    #+BEGIN_EXAMPLE
-   curl https://sq.btranslate.net/qtr/rss-feed
-   curl https://sq.btranslate.net/qtr/rss-feed/vocabulary
-   curl https://sq.btranslate.net/qtr/rss-feed/vocabulary/ICT_sq
-
-   curl https://qtranslate.net/qtr/rss-feed/LibreOffice/cui/sq
-   curl https://qtranslate.net/qtr/rss-feed/LibreOffice/cui
-
-   curl https://qtranslate.org/rss-feed/sq
-   curl https://qtranslate.org/rss-feed/sq/LibreOffice
-   curl https://qtranslate.org/rss-feed/sq/LibreOffice/cui
+   curl https://qtranslate.org/rss-feed/sq | python -m json.tool
+   curl https://en.btranslate.net/qtr/rss-feed | python -m json.tool
    #+END_EXAMPLE
 
 
-** twitter
-
-   + GET qtr/tweet[/$origin[/$project]] :: Return a random string and
-        its translations in a suitable form for the twitter (truncated
-        to 100 characters).
-
-   + GET tweet/$lng[/$origin[/$project]] :: Return a random string and
-        its translations in a suitable form for the twitter (truncated
-        to 100 characters).
-     - lng :: Language of translations.
-
-   *Note:* This can be used in combination with /cli twitter
-   clients/ and with *cron* to post random tweets about
-   translations.  See this script as an example:
-   https://github.com/Q-Translate/qtr_server/blob/master/utils/twitter.sh
-
-   Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/misc/twitter.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#misc/twitter.js]]
-
-   #+BEGIN_EXAMPLE
-   curl https://sq.btranslate.net/qtr/tweet
-   curl https://sq.btranslate.net/qtr/tweet/vocabulary
-   curl https://sq.btranslate.net/qtr/tweet/vocabulary/ICT_sq
-
-   curl https://qtranslate.net/qtr/tweet/vocabulary/ICT_sq/sq
-
-   curl https://qtranslate.org/tweet/sq
-   curl https://qtranslate.org/tweet/sq/vocabulary
-   curl https://qtranslate.org/tweet/sq/vocabulary/ICT_sq
-
-   curl -H 'Accept: application/json' \
-	https://qtranslate.org/tweet/sq | python -m json.tool
-   #+END_EXAMPLE
-
-
-** autocomplete
-
-   + GET auto/project/$str :: Retrieve a JSON list of autocomplete
-        suggestions for projects.
-     - str :: Beginning of a project name.
-
-   + GET auto/origin/$str :: Retrieve a JSON list of autocomplete
-        suggestions for origins of projects.
-     - str :: Beginning of an origin.
+** autouser
 
    + GET auto/user/$lng/$str :: Retrieve a JSON list of autocomplete
         suggestions for users.
      - lng :: Language of translations.
      - str :: Beginning of a user name.
 
-   + GET auto/string/$origin/$project/$str ::
-     Retrieve a JSON list of autocomplete suggestions for strings.
-     - origin :: Limit search to this origin. If it is =*=, then don't
-                 limit by origin.
-     - project :: Limit search to this project. If it is =*=, then
-                  don't limit by project.
-     - str :: Beginning of a string.
-
    Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/misc/autocomplete.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#misc/autocomplete.js]]
+   - [[https://dev.qtranslate.org/api-examples-php/misc/autouser.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#misc/autouser.js]]
 
    #+BEGIN_EXAMPLE
-   curl https://qtranslate.org/auto/project/kd
-   curl https://qtranslate.org/auto/origin/G
    curl https://qtranslate.org/auto/user/sq/d
-
-   curl https://qtranslate.org/auto/string/vocabulary/ICT_sq/a
-   curl https://qtranslate.org/auto/string/vocabulary/*/a
-   curl https://qtranslate.org/auto/string/*/ICT_sq/a
-   curl https://qtranslate.org/auto/string/*/*/a
    #+END_EXAMPLE
 
 
@@ -855,15 +322,9 @@
    + GET languages :: Return a json list of languages installed on the
                   system and their details.
 
-   + GET string_details/$sguid :: Return string context, a
-     list of related projects (where the string appears), etc.
-     provider.
-     - sguid :: Id of the string.
-
    Examples:
    #+BEGIN_EXAMPLE
    curl https://qtranslate.org/languages | python -m json.tool
-   curl https://qtranslate.org/string_details/0f27be1118ae4807f00ed5fa21a0f17fcc3649ed | python -m json.tool
    #+END_EXAMPLE
 
 
