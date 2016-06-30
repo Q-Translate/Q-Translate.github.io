@@ -1,6 +1,7 @@
 ---
 layout: org-info
 ---
+
 <div id="content">
 <h1 class="title">Q-Translate API Reference</h1>
 <div id="table-of-contents">
@@ -155,10 +156,10 @@ Examples:
 </ul>
 
 <pre class="example">
-curl -H 'Accept: application/json' \
-     'https://dev.qtranslate.org/api/translations/2,3,sq' \
+curl -k -H 'Accept: application/json' \
+     'https://qtranslate.org/api/translations/2,3,en' \
      | python -m json.tool
-curl -H 'Content-type: application/json' \
+curl -k -H 'Content-type: application/json' \
      -X POST https://qtranslate.org/api/translations/get
      -d '{"chapter": "2", "verse": "3", "lng": "en"}' \
      | python -m json.tool
@@ -171,16 +172,15 @@ curl -H 'Content-type: application/json' \
 <h3 id="orgheadline5">add</h3>
 <div class="outline-text-3" id="text-orgheadline5">
 <p>
-Add a new translation to a source string.
+Add a new translation to a verse.
 </p>
 
 <dl class="org-dl">
 <dt>POST api/translations/add</dt><dd><dl class="org-dl">
-<dt>sguid</dt><dd>The string ID for which a new translation should be added.</dd>
+<dt>chapter</dt><dd>Chapter number.</dd>
+<dt>verse</dt><dd>Verse number.</dd>
 <dt>lng</dt><dd>The language (code) of the new translation.</dd>
-<dt>translation</dt><dd>The new translation as a string. If the string has plural
-version(s) as well, they are concatenated with NULL bytes ("\0")
-between them.</dd>
+<dt>translation</dt><dd>The new translation as a string.</dd>
 </dl></dd>
 </dl>
 
@@ -188,7 +188,7 @@ between them.</dd>
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.qtranslate.org/api-examples-php/translations/add.php">http://dev.qtranslate.org/api-examples-php/translations/add.php</a></li>
+<li><a href="https://dev.qtranslate.org/api-examples-php/translations/add.php">https://dev.qtranslate.org/api-examples-php/translations/add.php</a></li>
 <li><a href="http://info.qtranslate.org/api-examples-js/#translations/add.js">http://info.qtranslate.org/api-examples-js/#translations/add.js</a></li>
 </ul>
 </div>
@@ -212,7 +212,7 @@ Add a like for the given translation.
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.qtranslate.org/api-examples-php/translations/like.php">http://dev.qtranslate.org/api-examples-php/translations/like.php</a></li>
+<li><a href="https://dev.qtranslate.org/api-examples-php/translations/like.php">https://dev.qtranslate.org/api-examples-php/translations/like.php</a></li>
 <li><a href="http://info.qtranslate.org/api-examples-js/#translations/like.js">http://info.qtranslate.org/api-examples-js/#translations/like.js</a></li>
 </ul>
 </div>
@@ -236,7 +236,7 @@ Delete a translation
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.qtranslate.org/api-examples-php/translations/add.php">http://dev.qtranslate.org/api-examples-php/translations/add.php</a></li>
+<li><a href="https://dev.qtranslate.org/api-examples-php/translations/add.php">https://dev.qtranslate.org/api-examples-php/translations/add.php</a></li>
 <li><a href="http://info.qtranslate.org/api-examples-js/#translations/add.js">http://info.qtranslate.org/api-examples-js/#translations/add.js</a></li>
 </ul>
 </div>
@@ -247,7 +247,7 @@ Examples:
 <h3 id="orgheadline8">search</h3>
 <div class="outline-text-3" id="text-orgheadline8">
 <p>
-Search strings and translations using various filters.
+Search verses and translations using various filters.
 </p>
 
 <dl class="org-dl">
@@ -262,34 +262,28 @@ more convenient.</dd>
 <dt>lng</dt><dd>The language of translations.</dd>
 <dt>limit</dt><dd>The number of results to be returned (min: 5, max: 50).</dd>
 <dt>words</dt><dd>Words to be searched for.</dd>
-<dt>sguid</dt><dd>If the <i>words</i> is empty and there is a <i>sguid</i> then the
-words of this string are used for searching.</dd>
+<dt>chapter</dt><dd>The chapter to search on.</dd>
 <dt>mode</dt><dd>Search mode. Can be one of:
 <ul class="org-ul">
-<li>natural-strings :       Natural search on strings (default).</li>
-<li>natural-translations :  Natural search on translations.</li>
-<li>boolean-strings :       Boolean search on strings.</li>
+<li>natural-verses :        Natural search on verses.</li>
+<li>natural-translations :  Natural search on translations (default).</li>
+<li>boolean-verses :        Boolean search on verses.</li>
 <li>boolean-translations :  Boolean search on translations.</li>
 </ul></dd>
 <dt>page</dt><dd>Page of results to be displayed.</dd>
-<dt>project</dt><dd>Limit search only to this project</dd>
-<dt>origin</dt><dd>Limit search only to the projects of this origin.</dd>
 <dt>only_mine</dt><dd>(boolean)
-Limit search only to the strings touched (translated or voted)
+Limit search only to the verses touched (translated or voted)
 by the current user.</dd>
 <dt>translated_by</dt><dd>Limit search by the author of translations
 (can be used only by admins).</dd>
-<dt>voted_by</dt><dd>Limit search by a voter (can be used only by admins).</dd>
+<dt>voted_by</dt><dd>Limit search by a user (can be used only by admins).</dd>
 <dt>date_filter</dt><dd>Which date to filter (used only by admins). Can be one of:
 <ul class="org-ul">
-<li>strings :       Filter Strings By Date</li>
 <li>translations :  Filter Translations By Date (default)</li>
-<li>votes :         Filter Votes By Date</li>
+<li>likes :         Filter Likes By Date</li>
 </ul></dd>
 <dt>from_date</dt><dd>Date and time.</dd>
 <dt>to_date</dt><dd>Date and time.</dd>
-<dt>list_mode</dt><dd>Used when listing the strings of a project.
-Can be one of: <i>all</i>, <i>translated</i>, <i>untranslated</i></dd>
 </dl></dd>
 </dl>
 <dl class="org-dl">
@@ -304,16 +298,18 @@ HTML page). It gets the same parameters as <code>GET
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.qtranslate.org/api-examples-php/translations/search.php">http://dev.qtranslate.org/api-examples-php/translations/search.php</a></li>
+<li><a href="https://dev.qtranslate.org/api-examples-php/translations/search.php">https://dev.qtranslate.org/api-examples-php/translations/search.php</a></li>
 <li><a href="http://info.qtranslate.org/api-examples-js/#translations/list.js">http://info.qtranslate.org/api-examples-js/#translations/list.js</a></li>
 <li><a href="http://info.qtranslate.org/api-examples-js/#translations/search.js">http://info.qtranslate.org/api-examples-js/#translations/search.js</a></li>
 </ul>
 
 <pre class="example">
 curl -k -H 'Accept: application/json' \
-     'http://dev.qtranslate.org/translations/search?lng=sq&amp;words=space'
+  'https://dev.qtranslate.org/api/translations/search?lng=en&amp;words=unseen&amp;chapter=2' \
+  | python -m json.tool
 curl -k -H 'Accept: application/json' \
-     'https://sq.btranslate.net/translations/search?lng=sq&amp;words=space'
+  'https://en.qtranslate.net/translations/search?words=unseen&amp;chapter=2' \
+   | python -m json.tool
 </pre>
 </div>
 </div>
@@ -330,7 +326,7 @@ Submit multiple actions at once.
 <dt>POST api/translations/submit</dt><dd>Array of actions. Each action is an associated array
 that contains the items:
 <dl class="org-dl">
-<dt>action</dt><dd>The action to be done: <code>add | vote | del | del_vote</code></dd>
+<dt>action</dt><dd>The action to be done: <code>add | vote | del</code></dd>
 <dt>params</dt><dd>Associative array of the needed parameters for this action.</dd>
 </dl></dd>
 </dl>
@@ -339,7 +335,7 @@ that contains the items:
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.qtranslate.org/api-examples-php/translations/submit.php">http://dev.qtranslate.org/api-examples-php/translations/submit.php</a></li>
+<li><a href="https://dev.qtranslate.org/api-examples-php/translations/submit.php">https://dev.qtranslate.org/api-examples-php/translations/submit.php</a></li>
 <li><a href="http://info.qtranslate.org/api-examples-js/#translations/submit.js">http://info.qtranslate.org/api-examples-js/#translations/submit.js</a></li>
 </ul>
 </div>
@@ -350,14 +346,13 @@ Examples:
 <h3 id="orgheadline10">import</h3>
 <div class="outline-text-3" id="text-orgheadline10">
 <p>
-Import translations from PO files.
+Import translations from file.
 </p>
 
 <dl class="org-dl">
 <dt>POST api/translations/import</dt><dd><dl class="org-dl">
 <dt>lng</dt><dd>Language of translations.</dd>
-<dt>file</dt><dd>A PO file with translations, or an archive of PO files
-(accepted extensions: .tar, .gz, .tgz, .bz2, .xz, .7z, .zip).</dd>
+<dt>file</dt><dd>A text file with translations.</dd>
 </dl>
 <p>
 Returns associative array containing:
@@ -370,27 +365,16 @@ is an array of a message and a type, where type can be one of
 </dl>
 
 <p>
-This is like a bulk translation and voting service. For any
-translation in the PO files, it will be added as a suggestion if
-such a translation does not exist, or it will just be voted if such
-a translation already exists. In case that the translation already
-exists but its author is not known, then you (the user who makes
-the import) will be recorded as the author of the translation.
-</p>
-
-<p>
-This can be useful for translators if they prefer to work off-line
-with PO files. They can export the PO files of a project, work on
-them with desktop tools (like Lokalize) to translate or correct
-exported translations, and then import back to Q-Translate the
-translated/corrected PO files.
+For any translation in the file, it will be added as a suggestion
+if such a translation does not exist, or it will just be liked if
+such a translation already exists.
 </p>
 
 <p>
 Examples:
 </p>
 <ul class="org-ul">
-<li><a href="http://dev.qtranslate.org/api-examples-php/translations/import.php">http://dev.qtranslate.org/api-examples-php/translations/import.php</a></li>
+<li><a href="https://dev.qtranslate.org/api-examples-php/translations/import.php">https://dev.qtranslate.org/api-examples-php/translations/import.php</a></li>
 <li><a href="http://info.qtranslate.org/api-examples-js/#translations/import.js">http://info.qtranslate.org/api-examples-js/#translations/import.js</a></li>
 </ul>
 </div>
@@ -455,6 +439,7 @@ curl https://en.btranslate.net/qtr/rss-feed | python -m json.tool
 </pre>
 </div>
 </div>
+
 
 
 <div id="outline-container-orgheadline14" class="outline-3">
@@ -580,6 +565,6 @@ For PHP examples see:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Dashamir Hoxha</p>
-<p class="date">Created: 2016-06-28 Tue 19:38</p>
+<p class="date">Created: 2016-06-30 Thu 18:12</p>
 <p class="validation"></p>
 </div>

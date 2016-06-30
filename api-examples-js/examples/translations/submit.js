@@ -4,13 +4,14 @@ var actions = [
   { 
     action: 'add',
     params: { 
-      sguid: 'd66b0fc286b887e9242ee1e6b777522f067f92af',
+      chapter: 2,
+      verse: 3,
       lng: 'en',
       translation: 'Test translation.',
     },
   },
   { 
-    action: 'vote',
+    action: 'like',
     params: { tguid: '40af5f58a7d1211c0cb5950d0b36b21c06cf50e6' },
   },
   { 
@@ -18,13 +19,10 @@ var actions = [
     params: { tguid: 'test-f58a7d1211c0cb5950d0b36b21c06cf50e6' },
   },
   { 
-    action: 'del_vote',
-    params: { tguid: 'test-f58a7d1211c0cb5950d0b36b21c06cf50e6' },
-  },
-  { 
     action: 'add',
     params: { 
-      sguid: 'd68b68585ee36d0bcda3dd3fd6eb4ebc2cdcbcbd',
+      chapter: 2,
+      verse: 3,
       lng: 'en',
       translation: '',
     },

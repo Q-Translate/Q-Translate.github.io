@@ -2,12 +2,12 @@
 var $token = new OAuth2.Token($config.oauth2);
 
 // Function for adding a new translation.
-var add_translation = function (sguid, lng, new_translation) {
+var add_translation = function (chapter, verse, lng, new_translation) {
   // Get an access_token.
   var access_token = $token.access_token();
   if (!access_token) {
     $token.get().done(function () {
-      add_translation(sguid, lng, new_translation);
+      add_translation(chapter, verse, lng, new_translation);
     });
     return;
   }
@@ -16,29 +16,30 @@ var add_translation = function (sguid, lng, new_translation) {
   var request = http_request('/api/translations/add', {
     type: 'POST',
     data: {
-      sguid: sguid,
+      chapter: chapter,
+      verse: verse,
       lng: lng,
-      translation: new_translation,
+      translation: new_translation
     },
     headers: {
-      'Authorization': 'Bearer ' + access_token,
-    },
+      'Authorization': 'Bearer ' + access_token
+    }
   });
 
-  // After adding the translation retrieve the string to check it.
+  // After adding the translation retrieve the verse to check it.
   request.done(function (response) {
     // Get the id of the added translation.
     tguid = response.tguid;
 
-    var url = '/api/translations/' + sguid + '?lng=en';
+    var url = '/api/translations/' + chapter + ',' + verse + ',' + lng;
     var request = http_request(url);
-    
+
     // Now delete the translation.
     request.done(function () {
       http_request('/api/translations/del', {
         type: 'POST',
         data: { tguid: tguid },
-        headers: { 'Authorization': 'Bearer ' + access_token },
+        headers: { 'Authorization': 'Bearer ' + access_token }
       });
     });
   });
@@ -47,7 +48,5 @@ var add_translation = function (sguid, lng, new_translation) {
 /******************************************************/
 
 // Add a new translation for a string.
-var sguid = '2a12b39f41bbd1ac78fdf456c25a480d2060c06b';
-var lng = 'en';
 var new_translation = 'test-translation-' + Math.floor(Math.random() * 10);
-add_translation(sguid, lng, new_translation);
+add_translation(2, 3, 'en', new_translation);

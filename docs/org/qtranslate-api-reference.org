@@ -86,10 +86,10 @@
    - [[https://dev.qtranslate.org/api-examples-php/translations/get.php]]
 
    #+BEGIN_EXAMPLE
-   curl -H 'Accept: application/json' \
-        'https://dev.qtranslate.org/api/translations/2,3,sq' \
+   curl -k -H 'Accept: application/json' \
+        'https://qtranslate.org/api/translations/2,3,en' \
         | python -m json.tool
-   curl -H 'Content-type: application/json' \
+   curl -k -H 'Content-type: application/json' \
         -X POST https://qtranslate.org/api/translations/get
         -d '{"chapter": "2", "verse": "3", "lng": "en"}' \
         | python -m json.tool
@@ -98,20 +98,20 @@
 
 ** add
 
-   Add a new translation to a source string.
+   Add a new translation to a verse.
 
    + POST api/translations/add ::
-     - sguid ::
-         The string ID for which a new translation should be added.
+     - chapter ::
+         Chapter number.
+     - verse ::
+         Verse number.
      - lng ::
          The language (code) of the new translation.
      - translation ::
-         The new translation as a string. If the string has plural
-         version(s) as well, they are concatenated with NULL bytes ("\0")
-         between them.
+         The new translation as a string.
 
    Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/translations/add.php]]
+   - [[https://dev.qtranslate.org/api-examples-php/translations/add.php]]
    - [[http://info.qtranslate.org/api-examples-js/#translations/add.js]]
 
 
@@ -123,7 +123,7 @@
      - tguid :: ID of the translation
 
    Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/translations/like.php]]
+   - [[https://dev.qtranslate.org/api-examples-php/translations/like.php]]
    - [[http://info.qtranslate.org/api-examples-js/#translations/like.js]]
 
 
@@ -135,13 +135,13 @@
      - tguid :: ID of the translation
 
    Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/translations/add.php]]
+   - [[https://dev.qtranslate.org/api-examples-php/translations/add.php]]
    - [[http://info.qtranslate.org/api-examples-js/#translations/add.js]]
 
 
 ** search
 
-   Search strings and translations using various filters.
+   Search verses and translations using various filters.
 
    + GET api/translations :: This provides the same
      functionality and has the same parameters as the *search*
@@ -157,41 +157,32 @@
          The number of results to be returned (min: 5, max: 50).
      - words ::
          Words to be searched for.
-     - sguid ::
-         If the /words/ is empty and there is a /sguid/ then the
-         words of this string are used for searching.
+     - chapter ::
+         The chapter to search on.
      - mode ::
          Search mode. Can be one of:
-         - natural-strings :       Natural search on strings (default).
-         - natural-translations :  Natural search on translations.
-         - boolean-strings :       Boolean search on strings.
+         - natural-verses :        Natural search on verses.
+         - natural-translations :  Natural search on translations (default).
+         - boolean-verses :        Boolean search on verses.
          - boolean-translations :  Boolean search on translations.
      - page ::
          Page of results to be displayed.
-     - project ::
-         Limit search only to this project
-     - origin ::
-         Limit search only to the projects of this origin.
      - only_mine :: (boolean)
-         Limit search only to the strings touched (translated or voted)
+         Limit search only to the verses touched (translated or voted)
          by the current user.
      - translated_by ::
          Limit search by the author of translations
          (can be used only by admins).
      - voted_by ::
-         Limit search by a voter (can be used only by admins).
+         Limit search by a user (can be used only by admins).
      - date_filter ::
          Which date to filter (used only by admins). Can be one of:
-         - strings :       Filter Strings By Date
          - translations :  Filter Translations By Date (default)
-         - votes :         Filter Votes By Date
+         - likes :         Filter Likes By Date
      - from_date ::
          Date and time.
      - to_date ::
          Date and time.
-     - list_mode ::
-         Used when listing the strings of a project.
-         Can be one of: /all/, /translated/, /untranslated/
 
   + GET translations/search :: Search strings and translations using
     various filters.  If the request header =Accept: application/json=
@@ -200,15 +191,17 @@
     api/translations=
 
   Examples:
-  - [[http://dev.qtranslate.org/api-examples-php/translations/search.php]]
+  - [[https://dev.qtranslate.org/api-examples-php/translations/search.php]]
   - [[http://info.qtranslate.org/api-examples-js/#translations/list.js]]
   - [[http://info.qtranslate.org/api-examples-js/#translations/search.js]]
 
   #+BEGIN_EXAMPLE
   curl -k -H 'Accept: application/json' \
-       'http://dev.qtranslate.org/translations/search?lng=sq&words=space'
+    'https://dev.qtranslate.org/api/translations/search?lng=en&words=unseen&chapter=2' \
+    | python -m json.tool
   curl -k -H 'Accept: application/json' \
-       'https://sq.btranslate.net/translations/search?lng=sq&words=space'
+    'https://en.qtranslate.net/translations/search?words=unseen&chapter=2' \
+     | python -m json.tool
   #+END_EXAMPLE
 
 
@@ -220,25 +213,24 @@
          Array of actions. Each action is an associated array
          that contains the items:
          - action ::
-             The action to be done: =add | vote | del | del_vote=
+             The action to be done: =add | vote | del=
          - params ::
              Associative array of the needed parameters for this action.
 
    Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/translations/submit.php]]
+   - [[https://dev.qtranslate.org/api-examples-php/translations/submit.php]]
    - [[http://info.qtranslate.org/api-examples-js/#translations/submit.js]]
 
 
 ** import
 
-   Import translations from PO files.
+   Import translations from file.
 
    + POST api/translations/import ::
      - lng ::
          Language of translations.
      - file ::
-         A PO file with translations, or an archive of PO files
-         (accepted extensions: .tar, .gz, .tgz, .bz2, .xz, .7z, .zip).
+         A text file with translations.
 
      Returns associative array containing:
      - messages ::
@@ -246,21 +238,12 @@
          is an array of a message and a type, where type can be one of
          =status=, =warning=, =error=.
 
-   This is like a bulk translation and voting service. For any
-   translation in the PO files, it will be added as a suggestion if
-   such a translation does not exist, or it will just be voted if such
-   a translation already exists. In case that the translation already
-   exists but its author is not known, then you (the user who makes
-   the import) will be recorded as the author of the translation.
-
-   This can be useful for translators if they prefer to work off-line
-   with PO files. They can export the PO files of a project, work on
-   them with desktop tools (like Lokalize) to translate or correct
-   exported translations, and then import back to Q-Translate the
-   translated/corrected PO files.
+   For any translation in the file, it will be added as a suggestion
+   if such a translation does not exist, or it will just be liked if
+   such a translation already exists.
 
    Examples:
-   - [[http://dev.qtranslate.org/api-examples-php/translations/import.php]]
+   - [[https://dev.qtranslate.org/api-examples-php/translations/import.php]]
    - [[http://info.qtranslate.org/api-examples-js/#translations/import.js]]
 
 
@@ -299,6 +282,7 @@
    curl https://qtranslate.org/rss-feed/sq | python -m json.tool
    curl https://en.btranslate.net/qtr/rss-feed | python -m json.tool
    #+END_EXAMPLE
+
 
 
 ** autouser
