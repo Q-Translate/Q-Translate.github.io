@@ -93,6 +93,9 @@
         -X POST https://qtranslate.org/api/translations/get
         -d '{"chapter": "2", "verse": "3", "lng": "en"}' \
         | python -m json.tool
+   curl -k -H 'Accept: application/json' \
+        'https://qtranslate.net/api/translations/2/3/en' \
+        | python -m json.tool
    #+END_EXAMPLE
 
 
