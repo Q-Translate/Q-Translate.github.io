@@ -309,9 +309,12 @@
    + GET languages :: Return a json list of languages installed on the
                   system and their details.
 
+   + GET chapters :: Return a json list of the chapters and their details.
+
    Examples:
    #+BEGIN_EXAMPLE
    curl https://qtranslate.org/languages | python -m json.tool
+   curl https://qtranslate.org/chapters | python -m json.tool | less
    #+END_EXAMPLE
 
 
