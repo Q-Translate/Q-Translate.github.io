@@ -2,8 +2,8 @@
 http_request('/api/translations/get', {
   type: 'POST',
   data: {
+    lng: 'en',
     chapter: 2,
-    verse: 3,
-    lng: 'en'
+    verse: 3
   }
 });

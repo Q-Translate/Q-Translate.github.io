@@ -18,7 +18,7 @@ var add_like = function (tguid) {
     headers: { 'Authorization': 'Bearer ' + access_token }
   }).done(function () {
     // Retrive the string and check that the translation has been liked.
-    var url = '/api/translations/2,3,en';
+    var url = '/api/translations/en,2,3';
     http_request(url).done(function () {
       // POST api/translations/del_like
       http_request('/api/translations/del_like', {
@@ -31,7 +31,7 @@ var add_like = function (tguid) {
 };
 
 // Get a verse and add a like to the first translation.
-http_request('/api/translations/2,3,en')
+http_request('/api/translations/en,2,3')
   .done(function(result){
     var tguid = result.verse.translations[0].tguid;
     add_like(tguid);

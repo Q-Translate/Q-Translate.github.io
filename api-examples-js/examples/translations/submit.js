@@ -4,9 +4,9 @@ var actions = [
   { 
     action: 'add',
     params: { 
+      lng: 'en',
       chapter: 2,
       verse: 3,
-      lng: 'en',
       translation: 'Test translation.',
     },
   },
@@ -21,9 +21,9 @@ var actions = [
   { 
     action: 'add',
     params: { 
+      lng: 'en',
       chapter: 2,
       verse: 3,
-      lng: 'en',
       translation: '',
     },
   },
