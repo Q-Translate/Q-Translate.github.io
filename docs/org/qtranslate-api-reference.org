@@ -232,6 +232,8 @@
    + POST api/translations/import ::
      - lng ::
          Language of translations.
+     - author ::
+         The author of translations.
      - file ::
          A text file with translations.
 
