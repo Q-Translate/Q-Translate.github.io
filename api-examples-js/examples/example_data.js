@@ -28,6 +28,16 @@ var example_data = {
           ],
         },
         {
+          section: 'tweet',
+          examples: [
+            {
+              title: 'GET tweet/$lng',
+              jsfile: 'misc/twitter.js',
+              apiref: '#sec-5-3',
+            },
+          ],
+        },
+        {
           section: 'autouser',
           examples: [
             {
