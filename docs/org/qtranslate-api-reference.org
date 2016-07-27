@@ -268,7 +268,6 @@
 
    #+BEGIN_EXAMPLE
    curl https://qtranslate.org/latest/en | python -m json.tool
-   curl https://en.btranslate.net/qtr/latest | python -m json.tool
    #+END_EXAMPLE
 
 
@@ -284,12 +283,12 @@
    - [[http://info.qtranslate.org/api-examples-js/#misc/rss-feed.js]]
 
    #+BEGIN_EXAMPLE
-   curl https://qtranslate.org/rss-feed/sq | python -m json.tool
-   curl https://en.btranslate.net/qtr/rss-feed | python -m json.tool
+   curl https://qtranslate.org/rss-feed/en
+   curl https://qtranslate.net/qtr/rss-feed/en
    #+END_EXAMPLE
 
 
-** twitter
+** tweet
 
    + GET tweet/$lng :: Return a random translation in a suitable form
         for the twitter. If the request header 'Accept:

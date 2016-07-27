@@ -1,7 +1,6 @@
 ---
 layout: org-info
 ---
-
 <div id="content">
 <h1 class="title">Q-Translate API Reference</h1>
 <div id="table-of-contents">
@@ -25,15 +24,16 @@ layout: org-info
 <li><a href="#orgheadline10">import</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline16">misc</a>
+<li><a href="#orgheadline17">misc</a>
 <ul>
 <li><a href="#orgheadline12">latest</a></li>
 <li><a href="#orgheadline13">rss-feed</a></li>
-<li><a href="#orgheadline14">autouser</a></li>
-<li><a href="#orgheadline15">other</a></li>
+<li><a href="#orgheadline14">tweet</a></li>
+<li><a href="#orgheadline15">autouser</a></li>
+<li><a href="#orgheadline16">other</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline17">oauth2</a></li>
+<li><a href="#orgheadline18">oauth2</a></li>
 </ul>
 </div>
 </div>
@@ -136,13 +136,13 @@ Get a verse, along with its translations, likes and other details.
 
 <dl class="org-dl">
 <dt>GET api/translations/$selector</dt><dd><dl class="org-dl">
-<dt>selector</dt><dd>Translation selector, in the form: chapter,verse,lng</dd>
+<dt>selector</dt><dd>Translation selector, in the form: lng,chapter,verse</dd>
 </dl></dd>
 
 <dt>POST api/translations/get</dt><dd><dl class="org-dl">
+<dt>lng</dt><dd>The language of translations, like en, fr, de, etc.</dd>
 <dt>chapter</dt><dd>Chapter number.</dd>
 <dt>verse</dt><dd>Verse number.</dd>
-<dt>lng</dt><dd>The language of translations, like en, fr, de, etc.</dd>
 </dl></dd>
 </dl>
 
@@ -157,11 +157,14 @@ Examples:
 
 <pre class="example">
 curl -k -H 'Accept: application/json' \
-     'https://qtranslate.org/api/translations/2,3,en' \
+     'https://qtranslate.org/api/translations/en,2,3' \
      | python -m json.tool
 curl -k -H 'Content-type: application/json' \
      -X POST https://qtranslate.org/api/translations/get
-     -d '{"chapter": "2", "verse": "3", "lng": "en"}' \
+     -d '{"lng": "en", "chapter": "2", "verse": "3"}' \
+     | python -m json.tool
+curl -k -H 'Accept: application/json' \
+     'https://qtranslate.net/api/translations/en/2/3' \
      | python -m json.tool
 </pre>
 </div>
@@ -177,9 +180,9 @@ Add a new translation to a verse.
 
 <dl class="org-dl">
 <dt>POST api/translations/add</dt><dd><dl class="org-dl">
+<dt>lng</dt><dd>The language (code) of the new translation.</dd>
 <dt>chapter</dt><dd>Chapter number.</dd>
 <dt>verse</dt><dd>Verse number.</dd>
-<dt>lng</dt><dd>The language (code) of the new translation.</dd>
 <dt>translation</dt><dd>The new translation as a string.</dd>
 </dl></dd>
 </dl>
@@ -352,6 +355,7 @@ Import translations from file.
 <dl class="org-dl">
 <dt>POST api/translations/import</dt><dd><dl class="org-dl">
 <dt>lng</dt><dd>Language of translations.</dd>
+<dt>author</dt><dd>The author of translations.</dd>
 <dt>file</dt><dd>A text file with translations.</dd>
 </dl>
 <p>
@@ -382,9 +386,9 @@ Examples:
 </div>
 
 
-<div id="outline-container-orgheadline16" class="outline-2">
-<h2 id="orgheadline16">misc</h2>
-<div class="outline-text-2" id="text-orgheadline16">
+<div id="outline-container-orgheadline17" class="outline-2">
+<h2 id="orgheadline17">misc</h2>
+<div class="outline-text-2" id="text-orgheadline17">
 </div><div id="outline-container-orgheadline12" class="outline-3">
 <h3 id="orgheadline12">latest</h3>
 <div class="outline-text-3" id="text-orgheadline12">
@@ -407,7 +411,6 @@ Examples:
 
 <pre class="example">
 curl https://qtranslate.org/latest/en | python -m json.tool
-curl https://en.btranslate.net/qtr/latest | python -m json.tool
 </pre>
 </div>
 </div>
@@ -434,17 +437,60 @@ Examples:
 </ul>
 
 <pre class="example">
-curl https://qtranslate.org/rss-feed/sq | python -m json.tool
-curl https://en.btranslate.net/qtr/rss-feed | python -m json.tool
+curl https://qtranslate.org/rss-feed/en
+curl https://qtranslate.net/qtr/rss-feed/en
 </pre>
 </div>
 </div>
 
 
-
 <div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14">autouser</h3>
+<h3 id="orgheadline14">tweet</h3>
 <div class="outline-text-3" id="text-orgheadline14">
+<dl class="org-dl">
+<dt>GET tweet/$lng</dt><dd>Return a random translation in a suitable form
+for the twitter. If the request header 'Accept:
+application/json' is set, then the output will be in JSON.
+This can be useful for adding your custom hashtags, url, etc.
+<dl class="org-dl">
+<dt>lng</dt><dd>Language of translations.</dd>
+</dl></dd>
+
+<dt>GET qtr/tweet/[$lng]</dt><dd>Return a random string and
+its translations in a suitable form for the twitter (truncated
+to 100 characters).</dd>
+</dl>
+
+
+<p>
+<b>Note:</b> This can be used in combination with <i>cli twitter
+clients</i> and with <b>cron</b> to post random tweets about
+translations.  See this script as an example:
+<a href="https://github.com/Q-Translate/qtr_server/blob/master/utils/twitter.sh">https://github.com/Q-Translate/qtr_server/blob/master/utils/twitter.sh</a>
+</p>
+
+<p>
+Examples:
+</p>
+<ul class="org-ul">
+<li><a href="https://dev.qtranslate.org/api-examples-php/misc/twitter.php">https://dev.qtranslate.org/api-examples-php/misc/twitter.php</a></li>
+<li><a href="http://info.qtranslate.org/api-examples-js/#misc/twitter.js">http://info.qtranslate.org/api-examples-js/#misc/twitter.js</a></li>
+</ul>
+
+<pre class="example">
+curl -q -k https://qtranslate.org/tweet/en
+curl -q -k -H 'Accept: application/json' \
+     https://qtranslate.org/tweet/en | python -m json.tool
+
+curl -q -k https://qtranslate.net/qtr/tweet/en
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15">autouser</h3>
+<div class="outline-text-3" id="text-orgheadline15">
 <dl class="org-dl">
 <dt>GET auto/user/$lng/$str</dt><dd>Retrieve a JSON list of autocomplete
 suggestions for users.
@@ -469,12 +515,14 @@ curl https://qtranslate.org/auto/user/sq/d
 </div>
 
 
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="orgheadline15">other</h3>
-<div class="outline-text-3" id="text-orgheadline15">
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16">other</h3>
+<div class="outline-text-3" id="text-orgheadline16">
 <dl class="org-dl">
 <dt>GET languages</dt><dd>Return a json list of languages installed on the
 system and their details.</dd>
+
+<dt>GET chapters</dt><dd>Return a json list of the chapters and their details.</dd>
 </dl>
 
 <p>
@@ -482,15 +530,16 @@ Examples:
 </p>
 <pre class="example">
 curl https://qtranslate.org/languages | python -m json.tool
+curl https://qtranslate.org/chapters | python -m json.tool | less
 </pre>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline17" class="outline-2">
-<h2 id="orgheadline17">oauth2</h2>
-<div class="outline-text-2" id="text-orgheadline17">
+<div id="outline-container-orgheadline18" class="outline-2">
+<h2 id="orgheadline18">oauth2</h2>
+<div class="outline-text-2" id="text-orgheadline18">
 <dl class="org-dl">
 <dt>POST oauth2/token</dt><dd><p>
 Get an OAuth2 token.
@@ -565,6 +614,6 @@ For PHP examples see:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Dashamir Hoxha</p>
-<p class="date">Created: 2016-06-30 Thu 18:12</p>
+<p class="date">Created: 2016-07-27 Wed 23:27</p>
 <p class="validation"></p>
 </div>
