@@ -11,9 +11,9 @@ var example_data = {
           section: 'latest',
           examples: [
             {
-              title: 'GET latest/$lng[/$origin[/$project]]',
+              title: 'GET latest/$lng',
               jsfile: 'misc/latest.js',
-              apiref: '#sec-5-1',
+              apiref: '#orgheadline13',
             },
           ],
         },
@@ -21,9 +21,9 @@ var example_data = {
           section: 'rss-feed',
           examples: [
             {
-              title: 'GET rss-feed[/$origin[/$project]]',
+              title: 'GET rss-feed/$lng',
               jsfile: 'misc/rss-feed.js',
-              apiref: '#sec-5-2',
+              apiref: '#orgheadline14',
             },
           ],
         },
@@ -33,7 +33,7 @@ var example_data = {
             {
               title: 'GET tweet/$lng',
               jsfile: 'misc/twitter.js',
-              apiref: '#sec-5-3',
+              apiref: '#orgheadline15',
             },
           ],
         },
@@ -43,7 +43,7 @@ var example_data = {
             {
               title: 'Autouser',
               jsfile: 'misc/autouser.js',
-              apiref: '#sec-5-4',
+              apiref: '#orgheadline16',
             },
           ],
         },
@@ -58,12 +58,12 @@ var example_data = {
             {
               title: 'GET api/report/stats',
               jsfile: 'report/stats_get.js',
-              apiref: '#sec-1-1',
+              apiref: '#orgheadline2',
             },
             {
               title: 'POST api/report/stats',
               jsfile: 'report/stats_post.js',
-              apiref: '#sec-1-1',
+              apiref: '#orgheadline2',
             },
           ],
         },
@@ -73,12 +73,12 @@ var example_data = {
             {
               title: 'GET api/report/topusers',
               jsfile: 'report/topusers_get.js',
-              apiref: '#sec-1-3',
+              apiref: '#orgheadline3',
             },
             {
               title: 'POST api/report/topusers',
               jsfile: 'report/topusers_post.js',
-              apiref: '#sec-1-3',
+              apiref: '#orgheadline3',
             },
           ],
         },
@@ -93,22 +93,22 @@ var example_data = {
             {
               title: 'Get a Token',
               jsfile: 'oauth2/get_token.js',
-              apiref: '#sec-6',
+              apiref: '#orgheadline18',
             },
             {
               title: 'Refresh a Token',
               jsfile: 'oauth2/refresh_token.js',
-              apiref: '#sec-6',
+              apiref: '#orgheadline18',
             },
             {
               title: 'Verify a Token',
               jsfile: 'oauth2/verify_token.js',
-              apiref: '#sec-6',
+              apiref: '#orgheadline18',
             },
             {
               title: 'Get Token From Proxy',
               jsfile: 'oauth2/get_token_from_proxy.js',
-              apiref: '#sec-6',
+              apiref: '#orgheadline18',
             },
           ],
         },
@@ -118,7 +118,7 @@ var example_data = {
             {
               title: 'Get the User Profile',
               jsfile: 'oauth2/get_user_profile.js',
-              apiref: '#sec-6',
+              apiref: '#orgheadline18',
             },
           ],
         },
@@ -133,12 +133,12 @@ var example_data = {
             {
               title: 'GET api/translations/selector',
               jsfile: 'translations/retrieve.js',
-              apiref: '#sec-2-2',
+              apiref: '#orgheadline5',
             },
             {
               title: 'POST api/translations/get',
               jsfile: 'translations/get.js',
-              apiref: '#sec-2-2',
+              apiref: '#orgheadline5',
             },
           ],
         },
@@ -148,12 +148,12 @@ var example_data = {
             {
               title: 'GET api/translations',
               jsfile: 'translations/list.js',
-              apiref: '#sec-2-7',
+              apiref: '#orgheadline9',
             },
             {
               title: 'POST api/translations/search',
               jsfile: 'translations/search.js',
-              apiref: '#sec-2-7',
+              apiref: '#orgheadline9',
             },
           ],
         },
@@ -163,7 +163,7 @@ var example_data = {
             {
               title: 'POST api/translations/add',
               jsfile: 'translations/add.js',
-              apiref: '#sec-2-3',
+              apiref: '#orgheadline6',
             },
           ],
         },
@@ -173,7 +173,7 @@ var example_data = {
             {
               title: 'POST api/translations/like',
               jsfile: 'translations/like.js',
-              apiref: '#sec-2-4',
+              apiref: '#orgheadline7',
             },
           ],
         },
@@ -183,7 +183,7 @@ var example_data = {
             {
               title: 'POST api/translations/submit',
               jsfile: 'translations/submit.js',
-              apiref: '#sec-2-8',
+              apiref: '#orgheadline10',
             },
           ],
         },
@@ -193,7 +193,7 @@ var example_data = {
             {
               title: 'POST api/translations/import',
               jsfile: 'translations/import.js',
-              apiref: '#sec-2-9',
+              apiref: '#orgheadline11',
             },
           ],
         },
