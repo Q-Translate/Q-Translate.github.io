@@ -307,8 +307,8 @@
    https://github.com/Q-Translate/qtr_server/blob/master/utils/twitter.sh
 
    Examples:
-   - [[https://dev.qtranslate.org/api-examples-php/misc/twitter.php]]
-   - [[http://info.qtranslate.org/api-examples-js/#misc/twitter.js]]
+   - [[https://dev.qtranslate.org/api-examples-php/misc/tweet.php]]
+   - [[http://info.qtranslate.org/api-examples-js/#misc/tweet.js]]
 
    #+BEGIN_EXAMPLE
    curl -q -k https://qtranslate.org/tweet/en

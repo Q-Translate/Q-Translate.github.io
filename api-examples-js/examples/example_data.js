@@ -32,7 +32,7 @@ var example_data = {
           examples: [
             {
               title: 'GET tweet/$lng',
-              jsfile: 'misc/twitter.js',
+              jsfile: 'misc/tweet.js',
               apiref: '#orgheadline14',
             },
           ],
