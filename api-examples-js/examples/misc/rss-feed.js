@@ -3,5 +3,5 @@ var link_to = function (url) {
 };
 
 // Get a RSS feed of the latest translations.
-link_to('https://en.qtranslate.net/qtr/rss-feed');
+link_to('https://qtranslate.net/qtr/rss-feed/en');
 link_to('https://qtranslate.org/rss-feed/en');

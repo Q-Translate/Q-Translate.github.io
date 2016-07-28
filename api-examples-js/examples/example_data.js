@@ -13,7 +13,7 @@ var example_data = {
             {
               title: 'GET latest/$lng',
               jsfile: 'misc/latest.js',
-              apiref: '#orgheadline13',
+              apiref: '#orgheadline12',
             },
           ],
         },
@@ -23,7 +23,7 @@ var example_data = {
             {
               title: 'GET rss-feed/$lng',
               jsfile: 'misc/rss-feed.js',
-              apiref: '#orgheadline14',
+              apiref: '#orgheadline13',
             },
           ],
         },
@@ -33,7 +33,7 @@ var example_data = {
             {
               title: 'GET tweet/$lng',
               jsfile: 'misc/twitter.js',
-              apiref: '#orgheadline15',
+              apiref: '#orgheadline14',
             },
           ],
         },
@@ -43,7 +43,7 @@ var example_data = {
             {
               title: 'Autouser',
               jsfile: 'misc/autouser.js',
-              apiref: '#orgheadline16',
+              apiref: '#orgheadline15',
             },
           ],
         },
@@ -58,12 +58,12 @@ var example_data = {
             {
               title: 'GET api/report/stats',
               jsfile: 'report/stats_get.js',
-              apiref: '#orgheadline2',
+              apiref: '#orgheadline1',
             },
             {
               title: 'POST api/report/stats',
               jsfile: 'report/stats_post.js',
-              apiref: '#orgheadline2',
+              apiref: '#orgheadline1',
             },
           ],
         },
@@ -73,12 +73,12 @@ var example_data = {
             {
               title: 'GET api/report/topusers',
               jsfile: 'report/topusers_get.js',
-              apiref: '#orgheadline3',
+              apiref: '#orgheadline2',
             },
             {
               title: 'POST api/report/topusers',
               jsfile: 'report/topusers_post.js',
-              apiref: '#orgheadline3',
+              apiref: '#orgheadline2',
             },
           ],
         },
@@ -133,12 +133,12 @@ var example_data = {
             {
               title: 'GET api/translations/selector',
               jsfile: 'translations/retrieve.js',
-              apiref: '#orgheadline5',
+              apiref: '#orgheadline4',
             },
             {
               title: 'POST api/translations/get',
               jsfile: 'translations/get.js',
-              apiref: '#orgheadline5',
+              apiref: '#orgheadline4',
             },
           ],
         },
@@ -148,12 +148,12 @@ var example_data = {
             {
               title: 'GET api/translations',
               jsfile: 'translations/list.js',
-              apiref: '#orgheadline9',
+              apiref: '#orgheadline8',
             },
             {
               title: 'POST api/translations/search',
               jsfile: 'translations/search.js',
-              apiref: '#orgheadline9',
+              apiref: '#orgheadline8',
             },
           ],
         },
@@ -163,7 +163,7 @@ var example_data = {
             {
               title: 'POST api/translations/add',
               jsfile: 'translations/add.js',
-              apiref: '#orgheadline6',
+              apiref: '#orgheadline5',
             },
           ],
         },
@@ -173,7 +173,7 @@ var example_data = {
             {
               title: 'POST api/translations/like',
               jsfile: 'translations/like.js',
-              apiref: '#orgheadline7',
+              apiref: '#orgheadline6',
             },
           ],
         },
@@ -183,7 +183,7 @@ var example_data = {
             {
               title: 'POST api/translations/submit',
               jsfile: 'translations/submit.js',
-              apiref: '#orgheadline10',
+              apiref: '#orgheadline9',
             },
           ],
         },
@@ -193,7 +193,7 @@ var example_data = {
             {
               title: 'POST api/translations/import',
               jsfile: 'translations/import.js',
-              apiref: '#orgheadline11',
+              apiref: '#orgheadline10',
             },
           ],
         },
