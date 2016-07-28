@@ -1,3 +1,4 @@
+var $api_ref = 'http://info.qtranslate.org/api/';
 
 $(document).ready(function() {
   // Build the HTML for the accordion by filling
@@ -5,9 +6,13 @@ $(document).ready(function() {
   var tmpl = $('#tmpl-examples').html();
   var examples_html = Mustache.render(tmpl, example_data);
   $('#examples').html(examples_html);
+  $('#Report').collapse('show');
 
   // Load an example when it is clicked.
   $('.example').click(load_example);
+
+  // Load an example.
+  $(".example[jsfile*='report/stats_get.js']").click();
 
   // Scroll to the top when the "up" button is clicked.
   $("a[href='#top']").click(function() {
@@ -59,7 +64,7 @@ var load_example = function(){
   // Set the href of the button 'API'.
   var apiref = $(this).attr('apiref');
   if (apiref) {
-    var href = 'http://info.qtranslate.org/api/' + apiref;
+    var href = $api_ref + apiref;
     $('#jscode-api').attr('href', href);
   }
 };
