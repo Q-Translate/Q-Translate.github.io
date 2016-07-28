@@ -73,7 +73,7 @@
    Get a verse, along with its translations, likes and other details.
 
    + GET api/translations/$selector ::
-     - selector :: Translation selector, in the form: lng,chapter,verse
+     - selector :: Translation selector, in the form 'lng:chapter:verse'
 
    + POST api/translations/get ::
      - lng :: The language of translations, like en, fr, de, etc.
@@ -87,7 +87,7 @@
 
    #+BEGIN_EXAMPLE
    curl -k -H 'Accept: application/json' \
-        'https://qtranslate.org/api/translations/en,2,3' \
+        'https://qtranslate.org/api/translations/en:2:3' \
         | python -m json.tool
    curl -k -H 'Content-type: application/json' \
         -X POST https://qtranslate.org/api/translations/get

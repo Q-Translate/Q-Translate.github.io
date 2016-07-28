@@ -136,7 +136,7 @@ Get a verse, along with its translations, likes and other details.
 
 <dl class="org-dl">
 <dt>GET api/translations/$selector</dt><dd><dl class="org-dl">
-<dt>selector</dt><dd>Translation selector, in the form: lng,chapter,verse</dd>
+<dt>selector</dt><dd>Translation selector, in the form 'lng:chapter:verse'</dd>
 </dl></dd>
 
 <dt>POST api/translations/get</dt><dd><dl class="org-dl">
@@ -157,7 +157,7 @@ Examples:
 
 <pre class="example">
 curl -k -H 'Accept: application/json' \
-     'https://qtranslate.org/api/translations/en,2,3' \
+     'https://qtranslate.org/api/translations/en:2:3' \
      | python -m json.tool
 curl -k -H 'Content-type: application/json' \
      -X POST https://qtranslate.org/api/translations/get
@@ -614,6 +614,6 @@ For PHP examples see:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Dashamir Hoxha</p>
-<p class="date">Created: 2016-07-27 Wed 23:27</p>
+<p class="date">Created: 2016-07-28 Thu 09:06</p>
 <p class="validation"></p>
 </div>
