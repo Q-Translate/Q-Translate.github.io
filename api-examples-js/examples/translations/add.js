@@ -31,7 +31,7 @@ var add_translation = function (lng, chapter, verse, new_translation) {
     // Get the id of the added translation.
     tguid = response.tguid;
 
-    var url = '/api/translations/' + lng + ',' + chapter + ',' + verse;
+    var url = '/api/translations/' + lng + ':' + chapter + ':' + verse;
     var request = http_request(url);
 
     // Now delete the translation.
