@@ -20,47 +20,123 @@ see: <a href="https://docs.docker.com/installation/"
 target="_blank">https://docs.docker.com/installation/</a></p>
 
 
+<a id="qtr_server"><h2>Installing qtr_server</h2></a>
+
+<ol>
+  <li>Get the image of the system:
+    <pre class="example">docker search qtranslate
+docker pull qtranslate/qtr_server</pre>
+  </li>
+
+  <li>Create a container:
+    <pre class="example">mkdir -p /qtr/downloads
+
+### create a container
+docker create --name=qtr --hostname=qtranslate.net \
+    -v /qtr/downloads:/var/www/downloads \
+    -p 80:80 -p 443:443 --restart=always \
+    qtranslate/qtr_server
+
+### start the container
+docker start qtr</pre>
+  </li>
+
+  <li>Change the configuration:
+    <pre class="example">### enter the shell of the container
+qtr-exec() { docker exec -it qtr env TERM=xterm script /dev/null -c "$@" -q; }
+qtr-exec bash
+
+### modify the configration settings
+cp install/settings.sh qtr.conf
+vim qtr.conf
+
+### change the configuration
+install/config.sh qtr.conf
+
+### restart the container
+exit
+docker restart qtr</pre>
+  </li>
+
+  <li>Make more configuration changes:
+    <pre class="example">### change the domain
+qtr-exec install/config/domain.sh
+
+### change the supported languages
+qtr-exec install/config/languages.sh
+
+### change drupal admin password
+qtr-exec install/config/drupalpass.sh
+
+### change the gmail account
+qtr-exec install/config/gmailsmtp.sh</pre>
+  </li>
+
+  <li>If this is a test installation or you are installing it on your
+    local machine, add to <code>/etc/hosts</code> a line like
+    this <code>127.0.0.1 qtranslate.net qtranslate.org
+    dev.qtranslate.org</code> with the domain that you used in
+    configuration and the IP of the server. Now you can open in
+    browser <a href="https://qtranslate.net"
+    target="_blank">https://qtranslate.net</a> <a href="https://qtranslate.org"
+    target="_blank">https://qtranslate.org</a> and access your
+    application. You will have to confirm the security exception,
+    since the SSL certificates of the web server are not real ones.
+  </li>
+
+  <li>Import all the translations:
+    <pre class="example">
+qtr-exec /var/www/data/import.sh en
+qtr-exec /var/www/data/import.sh fr
+qtr-exec /var/www/data/import.sh de
+qtr-exec /var/www/data/import.sh it</pre>
+  </li>
+
+</ol>
+
+
+
 <a id="qtr_client"><h2>Installing qtr_client</h2></a>
 
 <ol>
   <li>Get the image of the system:
     <pre class="example">docker search qtranslate
-docker pull qtranslate/qtr_client:v3.0</pre>
+docker pull qtranslate/qtr_client</pre>
   </li>
 
   <li>Create a container:
     <pre class="example">### create a container
-docker create --name=qtr_client --hostname=example.org \
+docker create --name=qcl-en --hostname=en.qtranslate.net \
     -p 80:80 -p 443:443 --restart=always \
-    qtranslate/qtr_client:v3.0
+    qtranslate/qtr_client
 
 ### start the container
-docker start qtr_client</pre>
+docker start qcl-en</pre>
   </li>
 
   <li>Change the configuration:
     <pre class="example">### enter the shell of the container
-alias docker-exec='docker exec -it qtr_client env TERM=xterm'
-docker-exec bash
+docker-exec() { local container=$1; shift; docker exec -it $container env TERM=xterm script /dev/null -c "$@" -q; }
+docker-exec qcl-en bash
 
 ### modify the configration settings
-cp install/settings.sh qtr_client.conf
-vim qtr_client.conf
+cp install/settings.sh qcl-en.conf
+vim qcl-en.conf
 
 ### change the configuration
-install/config.sh qtr_client.conf
+install/config.sh qcl-en.conf
 
 ### restart the container
 exit
-docker restart qtr_client</pre>
+docker restart qcl-en</pre>
   </li>
 
   <li>If this is a test installation or you are installing it on your
     local machine, add to <code>/etc/hosts</code> a line like
-    this <code>127.0.0.1 example.org</code> with the domain that you
+    this <code>127.0.0.1 en.qtranslate.net</code> with the domain that you
     used in configuration and the IP of the server. Now you can open
-    in browser <a href="https://example.org"
-    target="_blank">https://example.org</a> and access the
+    in browser <a href="https://en.qtranslate.net"
+    target="_blank">https://en.qtranslate.net</a> and access the
     application. You will have to confirm the security exception,
     since the SSL certificates of the web server are not real ones.
   </li>
@@ -70,70 +146,15 @@ docker restart qtr_client</pre>
 docker-exec install/config/domain.sh
 
 ### change the translation language
-docker-exec install/config/translation_lng.sh
+docker-exec qcl-en install/config/translation_lng.sh
 
 ### change drupal admin password
-docker-exec install/config/drupalpass.sh
+docker-exec qcl-en install/config/drupalpass.sh
 
 ### change the gmail account
-docker-exec install/config/gmailsmtp.sh
+docker-exec qcl-en install/config/gmailsmtp.sh
 
 ### change the oauth2 login settings
-docker-exec install/config/oauth2_login.sh</pre>
+docker-exec qcl-en install/config/oauth2_login.sh</pre>
   </li>
-</ol>
-
-
-<a id="qtr_server"><h2>Installing qtr_server</h2></a>
-
-<ol>
-  <li>Get the image of the system:
-    <pre class="example">docker search qtranslate
-docker pull qtranslate/qtr_server:v3.0</pre>
-  </li>
-
-  <li>Create a container:
-    <pre class="example">mkdir -p /docker/downloads
-
-### create a container
-docker create --name=qtr_server --hostname=example.org \
-    -v /docker/downloads:/var/www/downloads \
-    -p 80:80 -p 443:443 --restart=always \
-    qtranslate/qtr_server:v3.0
-
-### start the container
-docker start qtr_server</pre>
-  </li>
-
-  <li>Change the configuration:
-    <pre class="example">### enter the shell of the container
-alias docker-exec='docker exec -it qtr_server env TERM=xterm'
-docker-exec bash
-
-### modify the configration settings
-cp install/settings.sh qtr_server.conf
-vim qtr_server.conf
-
-### change the configuration
-install/config.sh qtr_server.conf
-
-### restart the container
-exit
-docker restart qtr_server</pre>
-  </li>
-
-  <li>Make more configuration changes:
-    <pre class="example">### change the domain
-docker-exec install/config/domain.sh
-
-### change the supported languages
-docker-exec install/config/languages.sh
-
-### change drupal admin password
-docker-exec install/config/drupalpass.sh
-
-### change the gmail account
-docker-exec install/config/gmailsmtp.sh</pre>
-  </li>
-
 </ol>
