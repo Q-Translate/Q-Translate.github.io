@@ -257,10 +257,19 @@
 
 ** latest
 
-   + GET latest/$lng :: Return the latest translations in JSON format.
+   + GET latest/$lng[/$days[/$limit]] :: Return the latest translations in JSON format.
         Latest means since yesterday.  Results are cached, so last minute
         translations may not appear on the list.
      - lng :: The language of translations.
+     - days :: Return all the translations since that many days
+          ago. If not given, return only the translations since
+          yesterday.
+     - limit :: Return that many translations from the latest ones,
+          regardless of their time. This takes precedence over the
+          number of days.
+
+   Each of the returned translations has these fields: =chapter_id,
+   verse_nr, vid, lng, translation, tguid, time, username, usermail=
 
    Examples:
    - [[https://dev.qtranslate.org/api-examples-php/misc/latest.php]]
@@ -268,6 +277,8 @@
 
    #+BEGIN_EXAMPLE
    curl https://qtranslate.org/latest/en | python -m json.tool
+   curl https://qtranslate.org/latest/en/7 | python -m json.tool
+   curl https://qtranslate.org/latest/en//5 | python -m json.tool
    #+END_EXAMPLE
 
 

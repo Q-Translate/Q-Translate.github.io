@@ -393,13 +393,22 @@ Examples:
 <h3 id="orgheadline12">latest</h3>
 <div class="outline-text-3" id="text-orgheadline12">
 <dl class="org-dl">
-<dt>GET latest/$lng</dt><dd>Return the latest translations in JSON format.
-Latest means since yesterday.  Results are cached, so last minute
-translations may not appear on the list.
+<dt>GET latest/$lng[/$days[/$limit]]</dt><dd>Return the latest translations in JSON format.
+Results are cached for 2 hours, so last minute translations may not appear on the list.
 <dl class="org-dl">
 <dt>lng</dt><dd>The language of translations.</dd>
+<dt>days</dt><dd>Return all the translations since that many days ago.
+    If not given, return only the translations since yesterday.</dd>
+<dt>limit</dt><dd>Return that many translations from the latest ones,
+    regardless of their time. This takes precedence over the number of days.</dd>
 </dl></dd>
 </dl>
+
+<p>
+  Each of the returned translations has these fields:
+  <code>chapter_id, verse_nr, vid, lng, translation, tguid,
+  time, username, usermail</code>
+</p>
 
 <p>
 Examples:
@@ -411,6 +420,8 @@ Examples:
 
 <pre class="example">
 curl https://qtranslate.org/latest/en | python -m json.tool
+curl https://qtranslate.org/latest/en/7 | python -m json.tool
+curl https://qtranslate.org/latest/en//5 | python -m json.tool
 </pre>
 </div>
 </div>
