@@ -162,12 +162,19 @@
          Words to be searched for.
      - chapter ::
          The chapter to search on.
-     - mode ::
-         Search mode. Can be one of:
-         - natural-verses :        Natural search on verses.
-         - natural-translations :  Natural search on translations (default).
-         - boolean-verses :        Boolean search on verses.
-         - boolean-translations :  Boolean search on translations.
+     - type ::
+         Type of search:
+         - similar :  Search words by similarity.
+         - logical : Search using logical (boolean) rules. For example
+           the sign =+= (or =-=) in front of a word indicates that the
+           word must be present (absent) in the result. A phrase that
+           is enclosed in double quotes (="=) is matched literally. A
+           star (=*=) appended to a word acts as a wildcard (matches
+           all the words starting with that word).
+     - what ::
+         What to search:
+         - translations :  Search translations.
+         - verses :        Search verses.
      - page ::
          Page of results to be displayed.
      - only_mine :: (boolean)

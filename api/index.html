@@ -266,12 +266,20 @@ more convenient.</dd>
 <dt>limit</dt><dd>The number of results to be returned (min: 5, max: 50).</dd>
 <dt>words</dt><dd>Words to be searched for.</dd>
 <dt>chapter</dt><dd>The chapter to search on.</dd>
-<dt>mode</dt><dd>Search mode. Can be one of:
+<dt>type</dt><dd>Type of search:
 <ul class="org-ul">
-<li>natural-verses :        Natural search on verses.</li>
-<li>natural-translations :  Natural search on translations (default).</li>
-<li>boolean-verses :        Boolean search on verses.</li>
-<li>boolean-translations :  Boolean search on translations.</li>
+<li>similar :  Search words by similarity.</li>
+<li>logical : Search using logical (boolean) rules. For example
+the sign <code>+</code> (or <code>-</code>) in front of a word indicates that the
+word must be present (absent) in the result. A phrase that
+is enclosed in double quotes (="<code>) is matched literally. A
+           star (=*</code>) appended to a word acts as a wildcard (matches
+all the words starting with that word).</li>
+</ul></dd>
+<dt>what</dt><dd>What to search:
+<ul class="org-ul">
+<li>translations :  Search translations.</li>
+<li>verses :        Search verses.</li>
 </ul></dd>
 <dt>page</dt><dd>Page of results to be displayed.</dd>
 <dt>only_mine</dt><dd>(boolean)
@@ -394,20 +402,22 @@ Examples:
 <div class="outline-text-3" id="text-orgheadline12">
 <dl class="org-dl">
 <dt>GET latest/$lng[/$days[/$limit]]</dt><dd>Return the latest translations in JSON format.
-Results are cached for 2 hours, so last minute translations may not appear on the list.
+Latest means since yesterday.  Results are cached, so last minute
+translations may not appear on the list.
 <dl class="org-dl">
 <dt>lng</dt><dd>The language of translations.</dd>
-<dt>days</dt><dd>Return all the translations since that many days ago.
-    If not given, return only the translations since yesterday.</dd>
+<dt>days</dt><dd>Return all the translations since that many days
+ago. If not given, return only the translations since
+yesterday.</dd>
 <dt>limit</dt><dd>Return that many translations from the latest ones,
-    regardless of their time. This takes precedence over the number of days.</dd>
+regardless of their time. This takes precedence over the
+number of days.</dd>
 </dl></dd>
 </dl>
 
 <p>
-  Each of the returned translations has these fields:
-  <code>chapter_id, verse_nr, vid, lng, translation, tguid,
-  time, username, usermail</code>
+Each of the returned translations has these fields: <code>chapter_id,
+   verse_nr, vid, lng, translation, tguid, time, username, usermail</code>
 </p>
 
 <p>
@@ -625,6 +635,6 @@ For PHP examples see:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Dashamir Hoxha</p>
-<p class="date">Created: 2016-07-28 Thu 09:06</p>
+<p class="date">Created: 2016-08-07 Sun 14:19</p>
 <p class="validation"></p>
 </div>
